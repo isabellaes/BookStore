@@ -1,4 +1,4 @@
-# Webbshop
+# Webbshop - Projekt till portfolio
 
 KRAVLISTA
 
