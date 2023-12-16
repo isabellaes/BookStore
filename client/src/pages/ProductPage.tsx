@@ -1,6 +1,7 @@
+import "../css/layout.css";
 const ProductPage = () => {
   return (
-    <div className="product">
+    <div className="container">
       <h1>Product</h1>
     </div>
   );

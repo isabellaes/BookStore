@@ -1,0 +1,27 @@
+.container {
+  min-height: 100vh;
+  max-width: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 2em;
+  padding: 1em;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  height: 4em;
+  background-color: beige;
+}
+
+header {
+  background-color: burlywood;
+  align-items: center;
+  justify-content: right;
+  display: flex;
+  padding-right: 2em;
+  height: 4em;
+  flex-direction: row;
+}
