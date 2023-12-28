@@ -8,6 +8,7 @@ const Header = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   return (
     <header>
+      <Link to={"/"}>Home</Link>
       <Link to={"/CheckoutPage"}>
         <ShoppingCartIcon></ShoppingCartIcon>
       </Link>

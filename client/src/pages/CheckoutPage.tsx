@@ -64,3 +64,34 @@ const CheckoutPage: React.FC = () => {
 };
 
 export default CheckoutPage;
+
+/* 
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+}
+
+interface CartItem {
+  product: Product;
+  quantity: number;
+}
+
+// Example list of products in the cart
+const cartItems: CartItem[] = [
+  { product: { id: 1, name: 'Product A', price: 10 }, quantity: 2 },
+  { product: { id: 2, name: 'Product B', price: 15 }, quantity: 3 },
+  // Add more items as needed
+];
+
+function calculateTotal(cartItems: CartItem[]): number {
+  return cartItems.reduce((total, cartItem) => {
+    return total + cartItem.product.price * cartItem.quantity;
+  }, 0);
+}
+
+// Example usage
+const totalCost = calculateTotal(cartItems);
+console.log('Total cost:', totalCost);
+
+*/
