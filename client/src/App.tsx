@@ -7,6 +7,8 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import { Provider } from "react-redux";
 import store from "./store";
+import ShoppingbagPage from "./pages/ShoppingBagPage";
+import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 
 function App() {
   return (
@@ -15,8 +17,16 @@ function App() {
         <Header></Header>
         <Routes>
           <Route index element={<HomePage />} />
+          <Route
+            path="/ShoppingBagPage"
+            element={<ShoppingbagPage></ShoppingbagPage>}
+          />
+          <Route
+            path="/OrderConfirmationPage"
+            element={<OrderConfirmationPage></OrderConfirmationPage>}
+          />
           <Route path="/CheckoutPage" element={<CheckoutPage />} />
-          <Route path="/ProductPage" element={<ProductPage />} />
+          <Route path="/ProductPage/:Id" element={<ProductPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Footer></Footer>

@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <header>
       <Link to={"/"}>Home</Link>
-      <Link to={"/CheckoutPage"}>
+      <Link to={"/ShoppingBagPage"}>
         <ShoppingCartIcon></ShoppingCartIcon>
       </Link>
 

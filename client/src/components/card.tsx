@@ -7,11 +7,13 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Product } from "../types";
 import { addToCart } from "../cartSlice";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 interface props {
   product: Product;
   addToCart: (product: Product) => void;
 }
 export default function MediaCard(product: props) {
+  const navigate = useNavigate();
   return (
     <Card sx={{ maxWidth: 345, margin: 1 }}>
       <CardMedia sx={{ height: 140 }} title={product.product.name} />
@@ -24,7 +26,12 @@ export default function MediaCard(product: props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Läs mer</Button>
+        <Button
+          size="small"
+          onClick={() => navigate(`/ProductPage/${product.product.id}`)}
+        >
+          Läs mer
+        </Button>
         <Button size="small" onClick={() => product.addToCart(product.product)}>
           Köp nu
         </Button>
