@@ -31,6 +31,7 @@ header {
   max-width: 100vw;
   box-sizing: border-box;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   margin: 2em;
   padding: 1em;
