@@ -1,11 +1,12 @@
 import "../css/layout.css";
 import MediaCard from "../components/card";
-import { Product, products } from "../types";
+import { Product } from "../types";
 import { addToCart } from "../store/cartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store/store";
 const HomePage = () => {
   const dispatch = useDispatch();
-
+  const products = useSelector((state: RootState) => state.product.products);
   const handleAddToCart = (product: Product) => {
     dispatch(addToCart(product));
   };
