@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Product } from "../types";
-import { addToCart } from "../cartSlice";
+import { addToCart } from "../store/cartSlice";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 interface props {
   product: Product;

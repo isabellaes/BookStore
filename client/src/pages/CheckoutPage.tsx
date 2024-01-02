@@ -1,11 +1,11 @@
 import "../css/layout.css";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../store";
+import { RootState } from "../store/store";
 import { Product } from "../types";
-import { createOrder } from "../orderSlice";
+import { createOrder } from "../store/orderSlice";
 import { useNavigate } from "react-router-dom";
-import { clearCart } from "../cartSlice";
+import { clearCart } from "../store/cartSlice";
 interface CartItem {
   product: Product;
   quantity: number;

@@ -1,6 +1,6 @@
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "../css/header.css";
-import { RootState } from "../store";
+import { RootState } from "../store/store";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 

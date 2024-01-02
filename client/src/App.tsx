@@ -6,7 +6,7 @@ import PageNotFound from "./pages/PageNotFound";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import { Provider } from "react-redux";
-import store from "./store";
+import store from "./store/store";
 import ShoppingbagPage from "./pages/ShoppingBagPage";
 import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 

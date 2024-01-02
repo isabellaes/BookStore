@@ -1,8 +1,8 @@
 import "../css/layout.css";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart, updateQuantity, clearCart } from "../cartSlice";
-import { RootState } from "../store";
+import { removeFromCart, updateQuantity, clearCart } from "../store/cartSlice";
+import { RootState } from "../store/store";
 import { Product } from "../types";
 import { useNavigate } from "react-router-dom";
 interface CartItem {
@@ -60,11 +60,12 @@ const ShoppingbagPage: React.FC = () => {
             </li>
           ))}
           <p>Total: {totalCost}</p>
+          <button onClick={handleClearCart}>Clear Cart</button>
+          <button onClick={() => navigate("/CheckoutPage")}>
+            Go to checkout
+          </button>
         </ul>
       )}
-
-      <button onClick={handleClearCart}>Clear Cart</button>
-      <button onClick={() => navigate("/CheckoutPage")}>Go to checkout</button>
     </div>
   );
 };
