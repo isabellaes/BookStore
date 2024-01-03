@@ -2,6 +2,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Link from "@mui/material/Link";
+
 interface CartItem {
   product: Product;
   quantity: number;
@@ -23,13 +26,14 @@ const OrderConfirmationPage = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <a
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        <ArrowBackIcon></ArrowBackIcon>
-      </a>
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" href="/">
+          Home
+        </Link>
+        <Link underline="hover" color="inherit">
+          Order
+        </Link>
+      </Breadcrumbs>
       <div className="container-checkout">
         <h1>Thank you for your order!</h1>
         <p>Products</p>

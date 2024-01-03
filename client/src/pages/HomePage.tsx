@@ -7,6 +7,13 @@ import { RootState } from "../store/store";
 import React, { useState, useEffect } from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Link from "@mui/material/Link";
+
+interface CartItem {
+  product: Product;
+  quantity: number;
+}
 
 const HomePage = () => {
   const [searchWord, setSearchWord] = useState("");
@@ -15,7 +22,11 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const items = useSelector((state: RootState) => state.product.products);
   const handleAddToCart = (product: Product) => {
-    dispatch(addToCart(product));
+    const cartItem: CartItem = {
+      product: product,
+      quantity: 1,
+    };
+    dispatch(addToCart(cartItem));
   };
   const itemsPerPage = 10;
 
@@ -37,6 +48,12 @@ const HomePage = () => {
     setCurrentPage(1);
   }
 
+  function filterByColor() {}
+
+  function filterByPrice() {}
+
+  function filterBySize() {}
+
   useEffect(() => {
     setProducts(items);
   }, [items]);
@@ -54,27 +71,35 @@ const HomePage = () => {
 
   return (
     <div className="container-checkout">
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" href="/">
+          Home
+        </Link>
+      </Breadcrumbs>
       <div className="search">
         <input onChange={(e) => setSearchWord(e.target.value)} type="text" />
         <button onClick={handleSearch}>Sök</button>
       </div>
-      <ul>
-        <li>
-          <a onClick={() => filterByCategory("animal")}>ANIMAL</a>
-        </li>
-        <li>
-          <a onClick={() => filterByCategory("plant")}>PLANTS</a>
-        </li>
-        <li>
-          <a onClick={() => filterByCategory("flower")}>FLOWERS</a>
-        </li>
-        <li>
-          <a onClick={() => filterByCategory("abstract")}>ABSTRACT</a>
-        </li>
-        <li>
-          <a onClick={() => filterByCategory("quote")}>QUOTES</a>
-        </li>
-      </ul>
+      <div className="list">
+        <ul>
+          <li>
+            <a onClick={() => filterByCategory("animal")}>ANIMAL</a>
+          </li>
+          <li>
+            <a onClick={() => filterByCategory("plant")}>PLANTS</a>
+          </li>
+          <li>
+            <a onClick={() => filterByCategory("flower")}>FLOWERS</a>
+          </li>
+          <li>
+            <a onClick={() => filterByCategory("abstract")}>ABSTRACT</a>
+          </li>
+          <li>
+            <a onClick={() => filterByCategory("quote")}>QUOTES</a>
+          </li>
+        </ul>
+      </div>
+
       <div className="container">
         {displayedProducts?.map((product) => (
           <MediaCard

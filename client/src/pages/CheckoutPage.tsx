@@ -7,6 +7,8 @@ import { createOrder } from "../store/orderSlice";
 import { useNavigate } from "react-router-dom";
 import { clearCart } from "../store/cartSlice";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Link from "@mui/material/Link";
 interface CartItem {
   product: Product;
   quantity: number;
@@ -70,13 +72,17 @@ const CheckoutPage: React.FC = () => {
     <div className="container-checkout">
       <h2>Checkout</h2>
 
-      <a
-        onClick={() => {
-          navigate("/ShoppingBagPage");
-        }}
-      >
-        <ArrowBackIcon></ArrowBackIcon>
-      </a>
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" href="/">
+          Home
+        </Link>
+        <Link underline="hover" color="inherit" href="/ShoppingBagPage">
+          Cart
+        </Link>
+        <Link underline="hover" color="inherit">
+          Checkout
+        </Link>
+      </Breadcrumbs>
       <ul>
         {cartItems.map((item) => (
           <li key={item.product.id}>

@@ -48,11 +48,32 @@ img {
   width: 200px;
 }
 
-ul,
-li {
+.img-product {
+  width: 400px;
+}
+
+.list ul,
+.list li {
   margin: 0;
   padding: 1em;
   list-style: none;
   display: flex;
   flex-direction: row;
+}
+
+.product {
+  margin: 1em;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
 }

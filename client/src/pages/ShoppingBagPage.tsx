@@ -6,6 +6,8 @@ import { RootState } from "../store/store";
 import { Product } from "../types";
 import { useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Link from "@mui/material/Link";
 
 interface CartItem {
   product: Product;
@@ -37,13 +39,14 @@ const ShoppingbagPage: React.FC = () => {
 
   return (
     <div className="container-checkout">
-      <a
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        <ArrowBackIcon></ArrowBackIcon>
-      </a>
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" href="/">
+          Home
+        </Link>
+        <Link underline="hover" color="inherit">
+          Cart
+        </Link>
+      </Breadcrumbs>
       <h2>Shopping Cart</h2>
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>

@@ -2,7 +2,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "../css/header.css";
 import { RootState } from "../store/store";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -10,6 +10,7 @@ const Header = () => {
   cartItems.forEach((item) => {
     numArray.push(item.quantity);
   });
+  const navigate = useNavigate();
 
   const sum: number = numArray.reduce((accumulator, currentValue) => {
     return accumulator + currentValue;
@@ -17,8 +18,7 @@ const Header = () => {
 
   return (
     <header>
-      <Link to={"/"}>Home</Link>
-      <h1>Poster Store</h1>
+      <h1 onClick={() => navigate("/")}>Poster Store</h1>
 
       <Link to={"/ShoppingBagPage"}>
         <ShoppingCartIcon></ShoppingCartIcon>({sum})
