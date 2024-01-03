@@ -15,7 +15,7 @@ interface props {
 export default function MediaCard(product: props) {
   const navigate = useNavigate();
   return (
-    <Card sx={{ maxWidth: 345, margin: 1 }}>
+    <Card sx={{ maxWidth: 445, margin: 1 }}>
       <CardMedia
         sx={{ height: 240 }}
         image={product.product.img}
@@ -23,7 +23,7 @@ export default function MediaCard(product: props) {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {product.product.name}
+          Poster {product.product.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Price: ${product.product.price.toFixed(2)}

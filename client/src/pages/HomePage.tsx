@@ -17,7 +17,7 @@ const HomePage = () => {
   const handleAddToCart = (product: Product) => {
     dispatch(addToCart(product));
   };
-  const itemsPerPage = 12;
+  const itemsPerPage = 11;
 
   function handleSearch() {
     const filtered = items.filter((product) => {

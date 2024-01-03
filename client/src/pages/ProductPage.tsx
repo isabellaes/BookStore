@@ -10,7 +10,7 @@ import Rating from "@mui/material/Rating";
 import { useState } from "react";
 
 const ProductPage = () => {
-  const [value, setValue] = useState<number | null>(2);
+  const [value, setValue] = useState<number | null>(4);
   const params = useParams<{ Id: string }>();
   const dispatch = useDispatch();
   const navigate = useNavigate();
