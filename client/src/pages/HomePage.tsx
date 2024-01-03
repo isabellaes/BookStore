@@ -17,11 +17,20 @@ const HomePage = () => {
   const handleAddToCart = (product: Product) => {
     dispatch(addToCart(product));
   };
-  const itemsPerPage = 11;
+  const itemsPerPage = 10;
 
   function handleSearch() {
     const filtered = items.filter((product) => {
       return product.tags?.includes(searchWord);
+    });
+
+    setProducts(filtered);
+    setCurrentPage(1);
+  }
+
+  function filterByCategory(word: string) {
+    const filtered = items.filter((product) => {
+      return product.tags?.includes(word);
     });
 
     setProducts(filtered);
@@ -49,6 +58,23 @@ const HomePage = () => {
         <input onChange={(e) => setSearchWord(e.target.value)} type="text" />
         <button onClick={handleSearch}>Sök</button>
       </div>
+      <ul>
+        <li>
+          <a onClick={() => filterByCategory("animal")}>ANIMAL</a>
+        </li>
+        <li>
+          <a onClick={() => filterByCategory("plant")}>PLANTS</a>
+        </li>
+        <li>
+          <a onClick={() => filterByCategory("flower")}>FLOWERS</a>
+        </li>
+        <li>
+          <a onClick={() => filterByCategory("abstract")}>ABSTRACT</a>
+        </li>
+        <li>
+          <a onClick={() => filterByCategory("quote")}>QUOTES</a>
+        </li>
+      </ul>
       <div className="container">
         {displayedProducts?.map((product) => (
           <MediaCard

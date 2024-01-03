@@ -47,3 +47,12 @@ form {
 img {
   width: 200px;
 }
+
+ul,
+li {
+  margin: 0;
+  padding: 1em;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
