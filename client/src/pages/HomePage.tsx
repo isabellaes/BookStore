@@ -48,11 +48,32 @@ const HomePage = () => {
     setCurrentPage(1);
   }
 
-  function filterByColor() {}
+  function filterByColor(color: string) {
+    const filtered = items.filter((product) => {
+      return product.tags?.includes(color);
+    });
 
-  function filterByPrice() {}
+    setProducts(filtered);
+    setCurrentPage(1);
+  }
 
-  function filterBySize() {}
+  function filterByPrice(price: number) {
+    const filtered = items.filter((product) => {
+      return product.price === price;
+    });
+
+    setProducts(filtered);
+    setCurrentPage(1);
+  }
+
+  function filterBySize(size: string) {
+    const filtered = items.filter((product) => {
+      return product.size === size;
+    });
+
+    setProducts(filtered);
+    setCurrentPage(1);
+  }
 
   useEffect(() => {
     setProducts(items);
@@ -70,53 +91,101 @@ const HomePage = () => {
   const displayedProducts = products?.slice(startIndex, endIndex);
 
   return (
-    <div className="container-checkout">
-      <Breadcrumbs aria-label="breadcrumb">
-        <Link underline="hover" color="inherit" href="/">
-          Home
-        </Link>
-      </Breadcrumbs>
-      <div className="search">
-        <input onChange={(e) => setSearchWord(e.target.value)} type="text" />
-        <button onClick={handleSearch}>Sök</button>
-      </div>
-      <div className="list">
-        <ul>
-          <li>
-            <a onClick={() => filterByCategory("animal")}>ANIMAL</a>
-          </li>
-          <li>
-            <a onClick={() => filterByCategory("plant")}>PLANTS</a>
-          </li>
-          <li>
-            <a onClick={() => filterByCategory("flower")}>FLOWERS</a>
-          </li>
-          <li>
-            <a onClick={() => filterByCategory("abstract")}>ABSTRACT</a>
-          </li>
-          <li>
-            <a onClick={() => filterByCategory("quote")}>QUOTES</a>
-          </li>
-        </ul>
-      </div>
+    <div className="layout">
+      <div className="container-home">
+        <div className="aside">
+          <div className="list">
+            <h2>Filter</h2>
+            <ul>
+              Categoies
+              <li>
+                <a onClick={() => filterByCategory("animal")}>Animal</a>
+              </li>
+              <li>
+                <a onClick={() => filterByCategory("plant")}>Plants</a>
+              </li>
+              <li>
+                <a onClick={() => filterByCategory("flower")}>Flowers</a>
+              </li>
+              <li>
+                <a onClick={() => filterByCategory("abstract")}>Abstract</a>
+              </li>
+              <li>
+                <a onClick={() => filterByCategory("quote")}>Quotes</a>
+              </li>
+            </ul>
+            <ul>
+              Colors
+              <li>
+                <a onClick={() => filterByColor("green")}>Green</a>
+              </li>
+              <li>
+                <a onClick={() => filterByColor("yellow")}>Yellow</a>
+              </li>
+              <li>
+                <a onClick={() => filterByColor("black")}>Black</a>
+              </li>
+              <li>
+                <a onClick={() => filterByColor("white")}>White</a>
+              </li>
+              <li>
+                <a onClick={() => filterByColor("pink")}>Pink</a>
+              </li>
+              <li>
+                <a onClick={() => filterByColor("purple")}>Purple</a>
+              </li>
+              <li>
+                <a onClick={() => filterByColor("red")}>Red</a>
+              </li>
+              <li>
+                <a onClick={() => filterByColor("blue")}>Blue</a>
+              </li>
+            </ul>
+            <ul>
+              Sizes
+              <li>
+                <a onClick={() => filterBySize("20x30cm")}>20x30cm</a>
+              </li>
+            </ul>
+            <ul>
+              Price
+              <li>
+                <a onClick={() => filterByPrice(22)}>$22.00</a>
+              </li>
+              <li>
+                <a onClick={() => filterByPrice(23)}>$23.00</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="content">
+          <div className="search">
+            <input
+              onChange={(e) => setSearchWord(e.target.value)}
+              type="text"
+            />
+            <button onClick={handleSearch}>Sök</button>
+          </div>
 
-      <div className="container">
-        {displayedProducts?.map((product) => (
-          <MediaCard
-            key={product.id}
-            product={product}
-            addToCart={handleAddToCart}
-          ></MediaCard>
-        ))}
+          <div className="container">
+            {displayedProducts?.map((product) => (
+              <MediaCard
+                key={product.id}
+                product={product}
+                addToCart={handleAddToCart}
+              ></MediaCard>
+            ))}
+          </div>
+          <Stack spacing={2}>
+            <Pagination
+              count={Math.ceil((products?.length || 0) / itemsPerPage)}
+              page={currentPage}
+              onChange={handlePageChange}
+              shape="rounded"
+            />
+          </Stack>
+        </div>
       </div>
-      <Stack spacing={2}>
-        <Pagination
-          count={Math.ceil((products?.length || 0) / itemsPerPage)}
-          page={currentPage}
-          onChange={handlePageChange}
-          shape="rounded"
-        />
-      </Stack>
     </div>
   );
 };
