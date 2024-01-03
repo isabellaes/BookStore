@@ -1,15 +1,16 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "../css/layout.css";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { Product } from "../types";
 import { addToCart } from "../store/cartSlice";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const ProductPage = () => {
   const params = useParams<{ Id: string }>();
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const handleAddToCart = (product: Product) => {
     dispatch(addToCart(product));
   };
@@ -24,6 +25,13 @@ const ProductPage = () => {
 
   return (
     <div className="container-checkout">
+      <button
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        <ArrowBackIcon></ArrowBackIcon>
+      </button>
       <h1>Product {params.Id}</h1>
       <p>{product.name}</p>
       <p>{product.price}</p>

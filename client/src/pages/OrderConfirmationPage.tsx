@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useNavigate } from "react-router-dom";
 interface CartItem {
   product: Product;
   quantity: number;
@@ -18,8 +20,16 @@ const OrderConfirmationPage = () => {
     }, 0);
   }
   const totalCost = calculateTotal(order.cartItems);
+  const navigate = useNavigate();
   return (
     <div>
+      <button
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        <ArrowBackIcon></ArrowBackIcon>
+      </button>
       <h1>Thank you for your order!</h1>
       <p>Products</p>
       <ul>

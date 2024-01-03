@@ -5,6 +5,8 @@ import { removeFromCart, updateQuantity, clearCart } from "../store/cartSlice";
 import { RootState } from "../store/store";
 import { Product } from "../types";
 import { useNavigate } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
 interface CartItem {
   product: Product;
   quantity: number;
@@ -35,6 +37,13 @@ const ShoppingbagPage: React.FC = () => {
 
   return (
     <div className="container-checkout">
+      <button
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        <ArrowBackIcon></ArrowBackIcon>
+      </button>
       <h2>Shopping Cart</h2>
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>

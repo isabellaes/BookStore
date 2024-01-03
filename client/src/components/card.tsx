@@ -17,7 +17,7 @@ export default function MediaCard(product: props) {
   return (
     <Card sx={{ maxWidth: 345, margin: 1 }}>
       <CardMedia
-        sx={{ height: 140 }}
+        sx={{ height: 240 }}
         image={product.product.img}
         title={product.product.name}
       />
