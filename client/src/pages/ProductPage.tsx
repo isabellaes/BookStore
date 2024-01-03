@@ -34,9 +34,12 @@ const ProductPage = () => {
       </a>
 
       <h1>Product {params.Id}</h1>
-      <p>{product.name}</p>
-      <p>{product.price}</p>
-      <img src={product.img} alt="" />
+      <p>Product: {product.name}</p>
+      <p>Price: {product.price}</p>
+      <p>Description: {product.description}</p>
+      <p>Size: {product.size}</p>
+      <p>Tags: {product.tags}</p>
+      <img src={product.img} alt="product-image" />
       <button onClick={() => handleAddToCart(product)}>
         Add to cart
         <AddShoppingCartIcon></AddShoppingCartIcon>
