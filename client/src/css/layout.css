@@ -6,14 +6,16 @@
   flex-direction: row;
   flex-wrap: wrap;
   margin: 2em;
-  padding: 1em;
+  padding: 2em;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 footer {
-  height: 4em;
+  height: fit-content;
   background-color: beige;
+  margin: 0;
+  padding: 2em;
 }
 
 header {

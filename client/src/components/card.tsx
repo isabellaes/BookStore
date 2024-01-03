@@ -26,7 +26,7 @@ export default function MediaCard(product: props) {
           {product.product.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Price: {product.product.price}
+          Price: ${product.product.price.toFixed(2)}
         </Typography>
       </CardContent>
       <CardActions>

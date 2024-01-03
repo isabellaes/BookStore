@@ -68,7 +68,7 @@ const ShoppingbagPage: React.FC = () => {
               />
             </li>
           ))}
-          <p>Total: {totalCost}</p>
+          <p>Total: ${totalCost.toFixed(2)}</p>
           <button onClick={handleClearCart}>Clear Cart</button>
           <button onClick={() => navigate("/CheckoutPage")}>
             Go to checkout

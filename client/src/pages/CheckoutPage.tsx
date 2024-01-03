@@ -84,7 +84,7 @@ const CheckoutPage: React.FC = () => {
             {item.quantity}
           </li>
         ))}
-        <p>Total: {totalCost}</p>
+        <p>Total: ${totalCost.toFixed(2)}</p>
       </ul>
       <p>Shipping and payment</p>
       <form onSubmit={onsubmit}>
