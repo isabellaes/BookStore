@@ -18,11 +18,11 @@ const Header = () => {
   return (
     <header>
       <Link to={"/"}>Home</Link>
-      <Link to={"/ShoppingBagPage"}>
-        <ShoppingCartIcon></ShoppingCartIcon>
-      </Link>
+      <h1>Poster Store</h1>
 
-      <p>({sum})</p>
+      <Link to={"/ShoppingBagPage"}>
+        <ShoppingCartIcon></ShoppingCartIcon>({sum})
+      </Link>
     </header>
   );
 };

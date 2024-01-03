@@ -37,13 +37,13 @@ const ShoppingbagPage: React.FC = () => {
 
   return (
     <div className="container-checkout">
-      <button
+      <a
         onClick={() => {
           navigate("/");
         }}
       >
         <ArrowBackIcon></ArrowBackIcon>
-      </button>
+      </a>
       <h2>Shopping Cart</h2>
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>

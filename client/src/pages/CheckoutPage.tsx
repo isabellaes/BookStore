@@ -69,13 +69,14 @@ const CheckoutPage: React.FC = () => {
   return (
     <div className="container-checkout">
       <h2>Checkout</h2>
-      <button
+
+      <a
         onClick={() => {
           navigate("/ShoppingBagPage");
         }}
       >
         <ArrowBackIcon></ArrowBackIcon>
-      </button>
+      </a>
       <ul>
         {cartItems.map((item) => (
           <li key={item.product.id}>

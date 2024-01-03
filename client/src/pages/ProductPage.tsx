@@ -25,13 +25,14 @@ const ProductPage = () => {
 
   return (
     <div className="container-checkout">
-      <button
+      <a
         onClick={() => {
           navigate("/");
         }}
       >
         <ArrowBackIcon></ArrowBackIcon>
-      </button>
+      </a>
+
       <h1>Product {params.Id}</h1>
       <p>{product.name}</p>
       <p>{product.price}</p>

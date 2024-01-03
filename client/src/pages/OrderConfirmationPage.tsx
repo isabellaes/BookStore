@@ -23,13 +23,13 @@ const OrderConfirmationPage = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <button
+      <a
         onClick={() => {
           navigate("/");
         }}
       >
         <ArrowBackIcon></ArrowBackIcon>
-      </button>
+      </a>
       <h1>Thank you for your order!</h1>
       <p>Products</p>
       <ul>

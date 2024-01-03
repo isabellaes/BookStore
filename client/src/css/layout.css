@@ -19,9 +19,9 @@ footer {
 header {
   background-color: burlywood;
   align-items: center;
-  justify-content: right;
+  justify-content: space-between;
   display: flex;
-  padding-right: 2em;
+  padding: 2em;
   height: 4em;
   flex-direction: row;
 }
