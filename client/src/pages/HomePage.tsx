@@ -20,8 +20,6 @@ const HomePage = () => {
   const [products, setProducts] = useState<Product[] | null>();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedColor, setSelectedColor] = useState<string[]>([]);
-  const [selectedPrice, setSelectedPrice] = useState<number | null>();
-  const [selectedSize, setSelectedSize] = useState<string | null>();
 
   const dispatch = useDispatch();
   const items = useSelector((state: RootState) => state.product.products);
@@ -56,13 +54,6 @@ const HomePage = () => {
     setSelectedColor(updatedTags);
   }
 
-  function filterProductsByPrice(price: number): Product[] {
-    return items.filter((product) => product.price === price);
-  }
-
-  function filterProductsBySize(size: string): Product[] {
-    return items.filter((product) => product.size === size);
-  }
   function toggleCategory(category: string): void {
     const updatedCategories = selectedCategories.includes(category)
       ? selectedCategories.filter((c) => c !== category)
@@ -87,14 +78,6 @@ const HomePage = () => {
 
     if (selectedColor) {
       filteredProducts = filterProductsByTag(selectedColor);
-    }
-
-    if (selectedSize) {
-      filteredProducts = filterProductsBySize(selectedSize);
-    }
-
-    if (selectedPrice) {
-      filteredProducts = filterProductsByPrice(selectedPrice);
     }
 
     setProducts(filteredProducts);
@@ -122,8 +105,6 @@ const HomePage = () => {
     }
     setSelectedCategories([]);
     setSelectedColor([]);
-    setSelectedPrice(null);
-    setSelectedSize(null);
     setProducts(items);
     setCurrentPage(1);
   }
@@ -135,10 +116,8 @@ const HomePage = () => {
           <div className="list">
             <h2>Filter</h2>
             <div>
-              <p>{selectedCategories}</p>
-              <p>{selectedColor}</p>
-              <p>{selectedPrice}</p>
-              <p>{selectedSize}</p>
+              <p>{selectedCategories.join(" ")}</p>
+              <p>{selectedColor.join(" ")}</p>
             </div>
             <form
               id="searchForm"
@@ -253,43 +232,7 @@ const HomePage = () => {
                   </li>
                 </ul>
               </div>
-              <div className="filter-size">
-                <ul>
-                  Sizes
-                  <li>
-                    <input
-                      onClick={() => setSelectedSize("20x30cm")}
-                      type="checkbox"
-                      name=""
-                      id="size1"
-                    />
-                    <label htmlFor="size1">20x30cm</label>
-                  </li>
-                </ul>
-              </div>
-              <div className="filter-price">
-                <ul>
-                  Price
-                  <li>
-                    <input
-                      onClick={() => setSelectedPrice(22)}
-                      type="checkbox"
-                      name=""
-                      id="price1"
-                    />
-                    <label htmlFor="price1">$22.00</label>
-                  </li>
-                  <li>
-                    <input
-                      onClick={() => setSelectedPrice(23)}
-                      type="checkbox"
-                      name=""
-                      id="price2"
-                    />
-                    <label htmlFor="price2">$23.00</label>
-                  </li>
-                </ul>
-              </div>
+
               <button onClick={applyFilters}>Apply filter</button>
               <button type="submit" onClick={clearFilter}>
                 Clear filter
@@ -334,3 +277,53 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+/* 
+const [selectedPrice, setSelectedPrice] = useState<number | null>();
+  const [selectedSize, setSelectedSize] = useState<string | null>();
+  function filterProductsByPrice(price: number): Product[] {
+    return items.filter((product) => product.price === price);
+  }
+
+  function filterProductsBySize(size: string): Product[] {
+    return items.filter((product) => product.size === size);
+  }
+
+  <div className="filter-size">
+                <ul>
+                  Sizes
+                  <li>
+                    <input
+                      onClick={() => setSelectedSize("20x30cm")}
+                      type="checkbox"
+                      name=""
+                      id="size1"
+                    />
+                    <label htmlFor="size1">20x30cm</label>
+                  </li>
+                </ul>
+              </div>
+              <div className="filter-price">
+                <ul>
+                  Price
+                  <li>
+                    <input
+                      onClick={() => setSelectedPrice(22)}
+                      type="checkbox"
+                      name=""
+                      id="price1"
+                    />
+                    <label htmlFor="price1">$22.00</label>
+                  </li>
+                  <li>
+                    <input
+                      onClick={() => setSelectedPrice(23)}
+                      type="checkbox"
+                      name=""
+                      id="price2"
+                    />
+                    <label htmlFor="price2">$23.00</label>
+                  </li>
+                </ul>
+              </div>
+*/
