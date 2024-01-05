@@ -13,13 +13,13 @@
 
 footer {
   height: fit-content;
-  background-color: beige;
+  background-color: rgb(138, 192, 212);
   margin: 0;
   padding: 2em;
 }
 
 header {
-  background-color: burlywood;
+  background-color: rgb(139, 135, 222);
   align-items: center;
   justify-content: space-between;
   display: flex;
@@ -104,7 +104,7 @@ img {
   margin: 0;
   padding: 0;
   width: 20%;
-  background-color: rgb(229, 219, 202);
+  background-color: rgb(202, 220, 229);
 }
 
 .content {
@@ -114,4 +114,76 @@ img {
   justify-content: center;
   box-sizing: border-box;
   padding: 1em 0 1em 0;
+}
+
+.search-container {
+  display: flex;
+  max-width: 400px;
+}
+
+.search-field {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+.search-button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #007bff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Optional: Hover effect on the button */
+.search-button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.add-to-cart-container {
+  display: flex;
+  max-width: 200px;
+}
+
+.add-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #007bff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  outline: none;
+  width: 7em;
+}
+
+.input-number {
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  width: 3em;
+}
+
+.remove-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #ff0000d4;
+  color: #181717;
+  border: 1px solid #ff0000;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.list ul {
+  list-style-type: none;
 }

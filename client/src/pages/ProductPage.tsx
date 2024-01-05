@@ -64,15 +64,20 @@ const ProductPage = () => {
           <p>Description: {product.description}</p>
           <p>Size: {product.size}</p>
           <p>Tags: {product.tags?.join(", ")}</p>
-          <input
-            type="number"
-            value={quantity}
-            onChange={(e) => setQuantity(parseInt(e.target.value))}
-          />
-          <button onClick={() => handleAddToCart(product)}>
-            Add to cart
-            <AddShoppingCartIcon></AddShoppingCartIcon>
-          </button>
+          <div className="add-to-cart-container">
+            <input
+              type="number"
+              value={quantity}
+              className="input-number"
+              onChange={(e) => setQuantity(parseInt(e.target.value))}
+            />
+            <button
+              className="add-button"
+              onClick={() => handleAddToCart(product)}
+            >
+              Add to cart <AddShoppingCartIcon></AddShoppingCartIcon>
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -54,21 +54,26 @@ const ShoppingbagPage: React.FC = () => {
         <ul>
           {cartItems.map((item) => (
             <li key={item.product.id}>
-              {item.product.name} - ${item.product.price.toFixed(2)} - Quantity:{" "}
-              {item.quantity}
-              <button onClick={() => handleRemoveFromCart(item.product.id)}>
-                Remove
-              </button>
-              <input
-                type="number"
-                value={item.quantity}
-                onChange={(e) =>
-                  handleUpdateQuantity(
-                    item.product.id,
-                    parseInt(e.target.value)
-                  )
-                }
-              />
+              <div className="add-to-cart-container">
+                {item.product.name} - ${item.product.price.toFixed(2)}
+                <input
+                  className="input-number"
+                  type="number"
+                  value={item.quantity}
+                  onChange={(e) =>
+                    handleUpdateQuantity(
+                      item.product.id,
+                      parseInt(e.target.value)
+                    )
+                  }
+                />
+                <button
+                  className="remove-button"
+                  onClick={() => handleRemoveFromCart(item.product.id)}
+                >
+                  Remove
+                </button>
+              </div>
             </li>
           ))}
           <p>Total: ${totalCost.toFixed(2)}</p>

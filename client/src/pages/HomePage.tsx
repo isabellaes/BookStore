@@ -7,8 +7,7 @@ import { RootState } from "../store/store";
 import React, { useState, useEffect } from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import Breadcrumbs from "@mui/material/Breadcrumbs";
-import Link from "@mui/material/Link";
+import CircleIcon from "@mui/icons-material/Circle";
 
 interface CartItem {
   product: Product;
@@ -19,6 +18,11 @@ const HomePage = () => {
   const [searchWord, setSearchWord] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [products, setProducts] = useState<Product[] | null>();
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedColor, setSelectedColor] = useState<string[]>([]);
+  const [selectedPrice, setSelectedPrice] = useState<number | null>();
+  const [selectedSize, setSelectedSize] = useState<string | null>();
+
   const dispatch = useDispatch();
   const items = useSelector((state: RootState) => state.product.products);
   const handleAddToCart = (product: Product) => {
@@ -39,39 +43,61 @@ const HomePage = () => {
     setCurrentPage(1);
   }
 
-  function filterByCategory(word: string) {
-    const filtered = items.filter((product) => {
-      return product.tags?.includes(word);
-    });
+  function filterProductsByTag(tag: string[]): Product[] {
+    return items.filter((product) =>
+      tag.some((category) => product.tags?.includes(category))
+    );
+  }
+  function toggleTags(tag: string): void {
+    const updatedTags = selectedColor.includes(tag)
+      ? selectedColor.filter((c) => c !== tag)
+      : [...selectedColor, tag];
 
-    setProducts(filtered);
-    setCurrentPage(1);
+    setSelectedColor(updatedTags);
   }
 
-  function filterByColor(color: string) {
-    const filtered = items.filter((product) => {
-      return product.tags?.includes(color);
-    });
-
-    setProducts(filtered);
-    setCurrentPage(1);
+  function filterProductsByPrice(price: number): Product[] {
+    return items.filter((product) => product.price === price);
   }
 
-  function filterByPrice(price: number) {
-    const filtered = items.filter((product) => {
-      return product.price === price;
-    });
+  function filterProductsBySize(size: string): Product[] {
+    return items.filter((product) => product.size === size);
+  }
+  function toggleCategory(category: string): void {
+    const updatedCategories = selectedCategories.includes(category)
+      ? selectedCategories.filter((c) => c !== category)
+      : [...selectedCategories, category];
 
-    setProducts(filtered);
-    setCurrentPage(1);
+    setSelectedCategories(updatedCategories);
   }
 
-  function filterBySize(size: string) {
-    const filtered = items.filter((product) => {
-      return product.size === size;
-    });
+  function filterProductsByCategories(categories: string[]): Product[] {
+    return items.filter((product) =>
+      categories.some((category) => product.tags?.includes(category))
+    );
+  }
 
-    setProducts(filtered);
+  function applyFilters(e: { preventDefault: () => void }) {
+    e.preventDefault();
+    let filteredProducts = [...items];
+
+    if (selectedCategories) {
+      filteredProducts = filterProductsByCategories(selectedCategories);
+    }
+
+    if (selectedColor) {
+      filteredProducts = filterProductsByTag(selectedColor);
+    }
+
+    if (selectedSize) {
+      filteredProducts = filterProductsBySize(selectedSize);
+    }
+
+    if (selectedPrice) {
+      filteredProducts = filterProductsByPrice(selectedPrice);
+    }
+
+    setProducts(filteredProducts);
     setCurrentPage(1);
   }
 
@@ -90,81 +116,198 @@ const HomePage = () => {
   const endIndex = startIndex + itemsPerPage;
   const displayedProducts = products?.slice(startIndex, endIndex);
 
+  function clearFilter(): void {
+    const form = document.getElementById("searchForm");
+    if (form) {
+    }
+    setSelectedCategories([]);
+    setSelectedColor([]);
+    setSelectedPrice(null);
+    setSelectedSize(null);
+    setProducts(items);
+    setCurrentPage(1);
+  }
+
   return (
     <div className="layout">
       <div className="container-home">
         <div className="aside">
           <div className="list">
             <h2>Filter</h2>
-            <ul>
-              Categoies
-              <li>
-                <a onClick={() => filterByCategory("animal")}>Animal</a>
-              </li>
-              <li>
-                <a onClick={() => filterByCategory("plant")}>Plants</a>
-              </li>
-              <li>
-                <a onClick={() => filterByCategory("flower")}>Flowers</a>
-              </li>
-              <li>
-                <a onClick={() => filterByCategory("abstract")}>Abstract</a>
-              </li>
-              <li>
-                <a onClick={() => filterByCategory("quote")}>Quotes</a>
-              </li>
-            </ul>
-            <ul>
-              Colors
-              <li>
-                <a onClick={() => filterByColor("green")}>Green</a>
-              </li>
-              <li>
-                <a onClick={() => filterByColor("yellow")}>Yellow</a>
-              </li>
-              <li>
-                <a onClick={() => filterByColor("black")}>Black</a>
-              </li>
-              <li>
-                <a onClick={() => filterByColor("white")}>White</a>
-              </li>
-              <li>
-                <a onClick={() => filterByColor("pink")}>Pink</a>
-              </li>
-              <li>
-                <a onClick={() => filterByColor("purple")}>Purple</a>
-              </li>
-              <li>
-                <a onClick={() => filterByColor("red")}>Red</a>
-              </li>
-              <li>
-                <a onClick={() => filterByColor("blue")}>Blue</a>
-              </li>
-            </ul>
-            <ul>
-              Sizes
-              <li>
-                <a onClick={() => filterBySize("20x30cm")}>20x30cm</a>
-              </li>
-            </ul>
-            <ul>
-              Price
-              <li>
-                <a onClick={() => filterByPrice(22)}>$22.00</a>
-              </li>
-              <li>
-                <a onClick={() => filterByPrice(23)}>$23.00</a>
-              </li>
-            </ul>
+            <div>
+              <p>{selectedCategories}</p>
+              <p>{selectedColor}</p>
+              <p>{selectedPrice}</p>
+              <p>{selectedSize}</p>
+            </div>
+            <form
+              id="searchForm"
+              onSubmit={(e) => {
+                e.currentTarget.reset();
+              }}
+            >
+              <div className="filter-category">
+                <ul>
+                  Categoies
+                  <li>
+                    <input
+                      type="checkbox"
+                      name="animal"
+                      id="animal"
+                      onChange={() => toggleCategory("animal")}
+                      checked={selectedCategories.includes("animal")}
+                      value="animal"
+                    />
+                    <label htmlFor="animal">Animal</label>
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      name="plant"
+                      id="plant"
+                      onChange={() => toggleCategory("plant")}
+                      checked={selectedCategories.includes("plant")}
+                      value="plant"
+                    />
+                    <label htmlFor="plant">Plants</label>
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      name=""
+                      id="flower"
+                      onChange={() => toggleCategory("flower")}
+                      checked={selectedCategories.includes("flower")}
+                    />
+                    <label htmlFor="flower">Flower</label>
+                  </li>
+                  <li>
+                    <input
+                      onChange={() => toggleCategory("abstract")}
+                      checked={selectedCategories.includes("abstract")}
+                      type="checkbox"
+                      name=""
+                      id="abstract"
+                    />
+                    <label htmlFor="abstract">Abstract</label>
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      name=""
+                      id="quote"
+                      onChange={() => toggleCategory("quote")}
+                      checked={selectedCategories.includes("quote")}
+                    />
+                    <label htmlFor="quote">Quote</label>
+                  </li>
+                </ul>
+              </div>
+              <div className="filter-color">
+                <ul>
+                  Colors
+                  <li>
+                    <a onClick={() => toggleTags("green")}>
+                      <CircleIcon sx={{ color: "green" }}></CircleIcon>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={() => toggleTags("yellow")}>
+                      <CircleIcon sx={{ color: "yellow" }}></CircleIcon>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={() => toggleTags("black")}>
+                      <CircleIcon sx={{ color: "black" }}></CircleIcon>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={() => toggleTags("white")}>
+                      {" "}
+                      <CircleIcon sx={{ color: "white" }}></CircleIcon>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={() => toggleTags("pink")}>
+                      {" "}
+                      <CircleIcon sx={{ color: "pink" }}></CircleIcon>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={() => toggleTags("purple")}>
+                      {" "}
+                      <CircleIcon sx={{ color: "purple" }}></CircleIcon>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={() => toggleTags("red")}>
+                      {" "}
+                      <CircleIcon sx={{ color: "red" }}></CircleIcon>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={() => toggleTags("blue")}>
+                      {" "}
+                      <CircleIcon sx={{ color: "blue" }}></CircleIcon>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="filter-size">
+                <ul>
+                  Sizes
+                  <li>
+                    <input
+                      onClick={() => setSelectedSize("20x30cm")}
+                      type="checkbox"
+                      name=""
+                      id="size1"
+                    />
+                    <label htmlFor="size1">20x30cm</label>
+                  </li>
+                </ul>
+              </div>
+              <div className="filter-price">
+                <ul>
+                  Price
+                  <li>
+                    <input
+                      onClick={() => setSelectedPrice(22)}
+                      type="checkbox"
+                      name=""
+                      id="price1"
+                    />
+                    <label htmlFor="price1">$22.00</label>
+                  </li>
+                  <li>
+                    <input
+                      onClick={() => setSelectedPrice(23)}
+                      type="checkbox"
+                      name=""
+                      id="price2"
+                    />
+                    <label htmlFor="price2">$23.00</label>
+                  </li>
+                </ul>
+              </div>
+              <button onClick={applyFilters}>Apply filter</button>
+              <button type="submit" onClick={clearFilter}>
+                Clear filter
+              </button>
+            </form>
           </div>
         </div>
         <div className="content">
-          <div className="search">
+          <div className="search-container">
             <input
-              onChange={(e) => setSearchWord(e.target.value)}
               type="text"
+              onChange={(e) => setSearchWord(e.target.value)}
+              className="search-field"
+              placeholder="Search..."
             />
-            <button onClick={handleSearch}>Sök</button>
+            <button className="search-button" onClick={handleSearch}>
+              Search
+            </button>
           </div>
 
           <div className="container">
