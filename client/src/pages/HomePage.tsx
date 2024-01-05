@@ -126,8 +126,8 @@ const HomePage = () => {
               }}
             >
               <div className="filter-category">
+                Categoies
                 <ul>
-                  Categoies
                   <li>
                     <input
                       type="checkbox"
@@ -183,8 +183,8 @@ const HomePage = () => {
                 </ul>
               </div>
               <div className="filter-color">
+                Colors
                 <ul>
-                  Colors
                   <li>
                     <a onClick={() => toggleTags("green")}>
                       <CircleIcon sx={{ color: "green" }}></CircleIcon>

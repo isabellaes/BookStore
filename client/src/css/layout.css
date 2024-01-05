@@ -184,6 +184,15 @@ img {
   outline: none;
 }
 
-.list ul {
+.filter-color ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   list-style-type: none;
+  padding: 5px;
+}
+
+.filter-category ul {
+  list-style-type: none;
+  padding: 5px;
 }
