@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import ShoppingbagPage from "./pages/ShoppingBagPage";
 import OrderConfirmationPage from "./pages/OrderConfirmationPage";
+import InfoPage from "./pages/InfoPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           />
           <Route path="/CheckoutPage" element={<CheckoutPage />} />
           <Route path="/ProductPage/:Id" element={<ProductPage />} />
+          <Route path="/InfoPage" element={<InfoPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Footer></Footer>

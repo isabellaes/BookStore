@@ -51,7 +51,7 @@ const ProductPage = () => {
           <img className="img-product" src={product.img} alt="product-image" />
         </div>
         <div className="product">
-          <h1>Product {params.Id}</h1>
+          <h1>{product.name}</h1>
           <Rating
             name="simple-controlled"
             value={value}

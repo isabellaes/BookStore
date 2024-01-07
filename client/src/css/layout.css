@@ -16,6 +16,8 @@ footer {
   background-color: rgb(138, 192, 212);
   margin: 0;
   padding: 2em;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -195,4 +197,16 @@ img {
 .filter-category ul {
   list-style-type: none;
   padding: 5px;
+}
+
+.info {
+  display: flex;
+  margin: 5em;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 100vh;
+}
+
+html {
+  scroll-behavior: smooth;
 }

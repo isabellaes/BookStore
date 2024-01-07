@@ -1,11 +1,14 @@
+import { Link, useNavigate } from "react-router-dom";
+
 const Footer = () => {
+  const navigate = useNavigate();
   return (
     <footer>
       <p>Poster Store</p>
-      <p>ShippingInformation</p>
-      <p>Payment</p>
-      <p>Faq</p>
-      <p>Contact</p>
+      <Link to="/InfoPage#contact">Contact</Link>
+      <Link to="/InfoPage#payment">Payment</Link>
+      <Link to="/InfoPage#shipping">Shipping</Link>
+      <Link to="/InfoPage#faq">Faq</Link>
     </footer>
   );
 };
