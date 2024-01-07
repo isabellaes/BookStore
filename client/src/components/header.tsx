@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <header>
-      <h1 onClick={() => navigate("/")}>Poster Store</h1>
+      <h1 onClick={() => navigate("/")}>POSTER STORE</h1>
 
       <Link to={"/ShoppingBagPage"}>
         <ShoppingCartIcon></ShoppingCartIcon>({sum})
