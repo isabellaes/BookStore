@@ -23,6 +23,7 @@ interface Order {
   email: string;
   cardNumber: string;
   cartItems: CartItem[];
+  date: Date;
 }
 const CheckoutPage: React.FC = () => {
   const [firstName, setFirstName] = useState("");
@@ -57,6 +58,7 @@ const CheckoutPage: React.FC = () => {
       email: email,
       cardNumber: cardNumber,
       cartItems: cartItems,
+      date: new Date(),
     };
 
     handleCreateOrder(order);

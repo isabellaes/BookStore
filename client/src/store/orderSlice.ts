@@ -9,6 +9,7 @@ interface Order {
   phoneNumber: string;
   email: string;
   cardNumber: string;
+  date: Date;
   cartItems: CartItem[];
 }
 interface CartItem {
@@ -31,6 +32,7 @@ const initialState: Order = {
   email: "",
   cardNumber: "",
   cartItems: [],
+  date: new Date(),
 };
 const orderSlice = createSlice({
   name: "order",

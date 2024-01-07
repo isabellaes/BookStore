@@ -54,6 +54,7 @@ const OrderConfirmationPage = () => {
         <p>{order.zipCode}</p>
         <p>{order.phoneNumber}</p>
         <p>{order.email}</p>
+        <p>{order.date.toLocaleDateString()}</p>
         <p>
           You will recieve your order in 1-3 days. <br />
           Welcome back!
