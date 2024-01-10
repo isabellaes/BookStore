@@ -12,6 +12,8 @@ interface props {
   product: Product;
   addToCart: (product: Product) => void;
 }
+
+/* Change this component and make it look more pro, dont use card make an custom made card-component */
 export default function MediaCard(product: props) {
   const navigate = useNavigate();
   return (

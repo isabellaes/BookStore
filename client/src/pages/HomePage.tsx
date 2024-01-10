@@ -14,6 +14,8 @@ interface CartItem {
   quantity: number;
 }
 
+//change colors and style in filter section
+
 const HomePage = () => {
   const [searchWord, setSearchWord] = useState("");
   const [currentPage, setCurrentPage] = useState(1);

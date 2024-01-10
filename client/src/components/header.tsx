@@ -3,6 +3,7 @@ import { RootState } from "../store/store";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
+/* Add navbar to header and better styling */
 const Header = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const numArray: number[] = [];
