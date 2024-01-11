@@ -1,4 +1,4 @@
-import "../css/layout.css";
+import "../css/layout.scss";
 import MediaCard from "../components/card";
 import { Product } from "../types";
 import { addToCart } from "../store/cartSlice";
@@ -13,8 +13,6 @@ interface CartItem {
   product: Product;
   quantity: number;
 }
-
-//change colors and style in filter section
 
 const HomePage = () => {
   const [searchWord, setSearchWord] = useState("");
