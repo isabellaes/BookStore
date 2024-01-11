@@ -84,6 +84,7 @@ interface Product {
 
 interface ProductState {
   products: Product[];
+  filterdProducts: Product[];
 }
 
 const initialState: ProductState = {
@@ -731,6 +732,7 @@ const initialState: ProductState = {
       tags: ["Animal", "butterfly", "orange"],
     },
   ],
+  filterdProducts: [],
 };
 
 const productSlice = createSlice({
@@ -738,17 +740,28 @@ const productSlice = createSlice({
   initialState,
   reducers: {
     addProduct: (state, action: PayloadAction<Product>) => {
-      state.products.push(action.payload);
+      state.filterdProducts.push(action.payload);
     },
     removeProduct: (state, action: PayloadAction<string>) => {
-      state.products = state.products.filter(
+      state.filterdProducts = state.filterdProducts.filter(
         (product) => product.id !== action.payload
       );
+    },
+    clearFilterdProducts: (state) => {
+      state.filterdProducts = [];
+    },
+    setFilterdProducts: (state, action: PayloadAction<Product[]>) => {
+      state.filterdProducts = action.payload;
     },
   },
 });
 
-export const { addProduct, removeProduct } = productSlice.actions;
+export const {
+  addProduct,
+  removeProduct,
+  clearFilterdProducts,
+  setFilterdProducts,
+} = productSlice.actions;
 
 export const selectProducts = (state: RootState) =>
   state.product?.products || [];

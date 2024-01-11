@@ -37,7 +37,7 @@ const ProductPage = () => {
   }
 
   return (
-    <div className="container-checkout">
+    <div className="container-product">
       <Breadcrumbs aria-label="breadcrumb">
         <Link underline="hover" color="inherit" href="/">
           Home
