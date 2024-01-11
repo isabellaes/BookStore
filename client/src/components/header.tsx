@@ -21,8 +21,8 @@ const Header = () => {
       <h1 onClick={() => navigate("/")}>POSTER STORE</h1>
       <nav>
         <ul>
+          <li>Home</li>
           <li>About</li>
-          <li>Categories</li>
           <li>Help and Faq</li>
           <li>Contact</li>
         </ul>

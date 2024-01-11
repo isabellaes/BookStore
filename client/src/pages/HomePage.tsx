@@ -8,6 +8,7 @@ import React, { useState, useEffect } from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import FilterForm from "../components/filterForm";
+import Layout from "../components/Layout";
 
 interface CartItem {
   product: Product;
@@ -56,40 +57,41 @@ const HomePage = () => {
 
   return (
     <div className="container-home">
-      <div className="content">
-        <div className="search-container">
-          <input
-            type="text"
-            onChange={(e) => setSearchWord(e.target.value)}
-            className="search-field"
-            placeholder="Search..."
-          />
-          <button className="search-button" onClick={handleSearch}>
-            Search
-          </button>
+      <Layout>
+        <div className="content">
+          <div className="search-container">
+            <input
+              type="text"
+              onChange={(e) => setSearchWord(e.target.value)}
+              className="search-field"
+              placeholder="Search..."
+            />
+            <button className="search-button" onClick={handleSearch}>
+              Search
+            </button>
+          </div>
+          <div className="buttons">
+            <button>FILTER</button>
+          </div>
+          <div className="container">
+            {displayedProducts?.map((product) => (
+              <MediaCard
+                key={product.id}
+                product={product}
+                addToCart={handleAddToCart}
+              ></MediaCard>
+            ))}
+          </div>
+          <Stack spacing={2}>
+            <Pagination
+              count={Math.ceil((products?.length || 0) / itemsPerPage)}
+              page={currentPage}
+              onChange={handlePageChange}
+              shape="rounded"
+            />
+          </Stack>
         </div>
-        <div className="buttons">
-          <button>FILTER</button>
-          <button>SORT RESULT</button>
-        </div>
-        <div className="container">
-          {displayedProducts?.map((product) => (
-            <MediaCard
-              key={product.id}
-              product={product}
-              addToCart={handleAddToCart}
-            ></MediaCard>
-          ))}
-        </div>
-        <Stack spacing={2}>
-          <Pagination
-            count={Math.ceil((products?.length || 0) / itemsPerPage)}
-            page={currentPage}
-            onChange={handlePageChange}
-            shape="rounded"
-          />
-        </Stack>
-      </div>
+      </Layout>
     </div>
   );
 };
