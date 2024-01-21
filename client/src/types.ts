@@ -7,3 +7,5 @@ export interface Product {
   size?: string;
   tags?: string[];
 }
+
+//move all interface to one page for cleaner code
