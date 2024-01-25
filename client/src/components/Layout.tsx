@@ -7,7 +7,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => (
   <div>
-    <aside>
+    <aside className="menu-categories">
       <ul>
         <li>
           <Link to="/CategoryPageQuote">Quote</Link>
