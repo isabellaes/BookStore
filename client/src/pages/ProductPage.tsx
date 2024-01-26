@@ -1,5 +1,4 @@
 import { useNavigate, useParams } from "react-router-dom";
-import "../css/layout.css";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { Product } from "../types";
@@ -46,24 +45,29 @@ const ProductPage = () => {
           Product
         </Link>
       </Breadcrumbs>
-      <div className="container">
+      <div className="row">
         <div className="product">
           <img className="img-product" src={product.img} alt="product-image" />
         </div>
         <div className="product">
           <h1>{product.name}</h1>
-          <Rating
-            name="simple-controlled"
-            value={value}
-            onChange={(event, newValue) => {
-              setValue(newValue);
-            }}
-          />
-          <p>Product: {product.name}</p>
-          <p>Price: ${product.price.toFixed(2)}</p>
-          <p>Description: {product.description}</p>
-          <p>Size: {product.size}</p>
-          <p>Tags: {product.tags?.join(", ")}</p>
+          <div className="rating">
+            <Rating
+              name="simple-controlled"
+              value={value}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
+            />
+          </div>
+          <div className="product-info">
+            <p>Product: {product.name}</p>
+            <p>Price: ${product.price.toFixed(2)}</p>
+            <p>Description: {product.description}</p>
+            <p>Size: {product.size}</p>
+            <p>Tags: {product.tags?.join(", ")}</p>
+          </div>
+
           <div className="add-to-cart-container">
             <input
               type="number"

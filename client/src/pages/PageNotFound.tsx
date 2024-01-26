@@ -1,4 +1,3 @@
-import "../css/layout.css";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 const PageNotFound = () => {

@@ -1,4 +1,4 @@
-@import "colors";
+@import "../variables/colors";
 
 @mixin standard-btn {
   cursor: pointer;
@@ -11,8 +11,8 @@
 @mixin container-standard {
   min-height: 100vh;
   max-width: 100vw;
-  margin: 2em;
-  padding: 2em;
+  margin: 1em;
+  padding: 1em;
 }
 
 @mixin flex-row {

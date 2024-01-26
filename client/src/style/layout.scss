@@ -1,0 +1,22 @@
+@import "./variables/colors";
+@import "./mixins/mixes";
+@import "./components/header";
+@import "./components/footer";
+@import "./pages/checkoutPage";
+@import "./pages/homePage";
+@import "./pages/infoPage";
+@import "./pages/orderConfirmationPage";
+@import "./pages/pageNotFound";
+@import "./pages/productPage";
+@import "./pages/shoppingCartPage";
+@import "./components/card";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}

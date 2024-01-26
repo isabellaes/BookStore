@@ -1,0 +1,11 @@
+.info {
+  display: flex;
+  margin: 5em;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 100vh;
+
+  section {
+    margin: 5em 0 5em 0;
+  }
+}

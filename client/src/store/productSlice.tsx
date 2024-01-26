@@ -207,15 +207,7 @@ const initialState: ProductState = {
       size: "20x30cm",
       tags: ["animal", "blue", "sea", "dolphine"],
     },
-    {
-      id: "14",
-      name: "Flamingo",
-      price: 23,
-      img: image14,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["animal", "pink", "flamingo"],
-    },
+
     {
       id: "15",
       name: "Bike in city",
@@ -227,15 +219,6 @@ const initialState: ProductState = {
     },
 
     {
-      id: "17",
-      name: "Abstract",
-      price: 22,
-      img: image17,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["abstract", "art", "purple", "green", "pink"],
-    },
-    {
       id: "18",
       name: "Fox",
       price: 22,
@@ -244,15 +227,7 @@ const initialState: ProductState = {
       size: "20x30cm",
       tags: ["fox", "animal", "red"],
     },
-    {
-      id: "19",
-      name: "Abstract",
-      price: 22,
-      img: image19,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["abstract", "art", "pink", "purple"],
-    },
+
     {
       id: "20",
       name: "Lion",
@@ -271,33 +246,7 @@ const initialState: ProductState = {
       size: "20x30cm",
       tags: ["dog", "animal", "yellow", "black"],
     },
-    {
-      id: "22",
-      name: "Abstract",
-      price: 22,
-      img: image23,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["abstract", "art", "blue", "yellow"],
-    },
-    {
-      id: "23",
-      name: "Abstract",
-      price: 22,
-      img: image24,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["abstract", "art", "blue", "yellow"],
-    },
-    {
-      id: "24",
-      name: "Quote",
-      price: 22,
-      img: image25,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["quote", "black", "white"],
-    },
+
     {
       id: "25",
       name: "Quote",
@@ -307,15 +256,7 @@ const initialState: ProductState = {
       size: "20x30cm",
       tags: ["quote", "black", "white"],
     },
-    {
-      id: "26",
-      name: "Plant",
-      price: 23,
-      img: image27,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["plant", "green"],
-    },
+
     {
       id: "27",
       name: "Flower",
@@ -325,51 +266,7 @@ const initialState: ProductState = {
       size: "20x30cm",
       tags: ["plant", "green", "pink", "flower"],
     },
-    {
-      id: "28",
-      name: "Quote",
-      price: 24,
-      img: image29,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["quote", "black", "white"],
-    },
-    {
-      id: "29",
-      name: "Lion",
-      price: 22,
-      img: image30,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["lion", "animal", "yellow"],
-    },
-    {
-      id: "30",
-      name: "Zebra",
-      price: 22,
-      img: image31,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["zebra", "animal", "black", "white"],
-    },
-    {
-      id: "31",
-      name: "Butterfly",
-      price: 22,
-      img: image21,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["butterfly", "animal", "orange"],
-    },
-    {
-      id: "32",
-      name: "Animal",
-      price: 22,
-      img: image32,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["animal", "brown", "green"],
-    },
+
     {
       id: "33",
       name: "Cat",
@@ -379,15 +276,7 @@ const initialState: ProductState = {
       size: "20x30cm",
       tags: ["animal", "grey", "green", "cat"],
     },
-    {
-      id: "34",
-      name: "Leo",
-      price: 22,
-      img: image34,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["animal", "green", "cat"],
-    },
+
     {
       id: "35",
       name: "Plant",
@@ -425,15 +314,7 @@ const initialState: ProductState = {
       size: "20x30cm",
       tags: ["abstract", "art", "black", "white"],
     },
-    {
-      id: "39",
-      name: "Abstract",
-      price: 22,
-      img: image39,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["abstract", "art", "blue", "pink", "purple"],
-    },
+
     {
       id: "40",
       name: "Meadow Dream",
@@ -443,15 +324,7 @@ const initialState: ProductState = {
       size: "20x30cm",
       tags: ["meadow", "flower", "yellow"],
     },
-    {
-      id: "41",
-      name: "White tiger",
-      price: 22,
-      img: image41,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["tiger", "animal", "white"],
-    },
+
     {
       id: "42",
       name: "Green plant",
@@ -533,15 +406,7 @@ const initialState: ProductState = {
       size: "20x30cm",
       tags: ["animal", "grey"],
     },
-    {
-      id: "52",
-      name: "Quote",
-      price: 22,
-      img: image52,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["quote", "black", "white"],
-    },
+
     {
       id: "53",
       name: "Flower",
@@ -605,15 +470,7 @@ const initialState: ProductState = {
       size: "20x30cm",
       tags: ["abstract", "art", "blue", "pink", "purple"],
     },
-    {
-      id: "60",
-      name: "Abstract",
-      price: 22,
-      img: image60,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["abstract", "art", "blue", "pink", "purple"],
-    },
+
     {
       id: "61",
       name: "Abstract",
@@ -659,33 +516,7 @@ const initialState: ProductState = {
       size: "20x30cm",
       tags: ["quote", "black", "white"],
     },
-    {
-      id: "66",
-      name: "Quote",
-      price: 22,
-      img: image66,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["quote", "black", "white"],
-    },
-    {
-      id: "67",
-      name: "Abstract",
-      price: 22,
-      img: image67,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["abstract", "black", "yellow", "orange", "art"],
-    },
-    {
-      id: "68",
-      name: "Quote",
-      price: 22,
-      img: image68,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["quote", "black", "white"],
-    },
+
     {
       id: "69",
       name: "Giraffe",
@@ -713,15 +544,7 @@ const initialState: ProductState = {
       size: "20x30cm",
       tags: ["abstract", "art", "pink", "blue"],
     },
-    {
-      id: "72",
-      name: "Turtle",
-      price: 22,
-      img: image72,
-      description: "Poster",
-      size: "20x30cm",
-      tags: ["Animal", "sea", "blue"],
-    },
+
     {
       id: "73",
       name: "Butterfly",

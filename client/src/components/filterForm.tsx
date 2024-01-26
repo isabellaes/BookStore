@@ -8,7 +8,10 @@ import {
   setFilterdProducts,
 } from "../store/productSlice";
 
-const FilterForm = () => {
+interface Props {
+  handlyApplyFilter: () => void;
+}
+const FilterForm = (props: Props) => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedColor, setSelectedColor] = useState<string[]>([]);
 
@@ -56,6 +59,7 @@ const FilterForm = () => {
     }
 
     dispatch(setFilterdProducts(filteredProducts));
+    props.handlyApplyFilter();
   }
   function clearFilter(): void {
     setSelectedCategories([]);

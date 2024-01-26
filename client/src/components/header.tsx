@@ -2,7 +2,6 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { RootState } from "../store/store";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import "../css/layout.scss";
 
 const Header = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -18,18 +17,32 @@ const Header = () => {
 
   return (
     <header>
-      <h1 onClick={() => navigate("/")}>POSTER STORE</h1>
+      <div className="title">
+        <h1 onClick={() => navigate("/")}>POSTER STORE</h1>
+      </div>
+
       <nav>
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Help and Faq</li>
-          <li>Contact</li>
+          <li>
+            <Link to={"/"}>Home</Link>
+          </li>
+          <li>
+            <Link to={"/InfoPage"}>About</Link>
+          </li>
+          <li>
+            <Link to={"/InfoPage"}>Faq</Link>
+          </li>
+          <li>
+            <Link to={"/InfoPage"}>Contact</Link>
+          </li>
+
+          <li>
+            <Link to={"/ShoppingBagPage"}>
+              <ShoppingCartIcon></ShoppingCartIcon>({sum})
+            </Link>
+          </li>
         </ul>
       </nav>
-      <Link to={"/ShoppingBagPage"}>
-        <ShoppingCartIcon></ShoppingCartIcon>({sum})
-      </Link>
     </header>
   );
 };
