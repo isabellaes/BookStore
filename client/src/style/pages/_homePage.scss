@@ -4,6 +4,12 @@
   align-items: center;
   justify-content: center;
 
+  .menu-box-homepage {
+    @include flex-row;
+    align-items: center;
+    justify-content: space-between;
+    width: 80vw;
+  }
   .categorys ul,
   .categorys li {
     @include flex-row;
@@ -15,18 +21,13 @@
     @include flex-column;
     align-items: end;
     justify-content: left;
-    width: 80vw;
   }
-  .aside {
-    @include flex-column;
-    width: 100%;
-    background-color: $secondary-color;
-  }
+
   .content {
     @include flex-column;
     align-items: center;
     justify-content: center;
-    padding: 1em 0 1em 0;
+    padding: 0 0 1em 0;
   }
   .search-container {
     display: flex;
@@ -58,5 +59,54 @@
   .filter-category ul {
     list-style-type: none;
     padding: 5px;
+  }
+
+  .filter-container {
+    @include flex-column;
+    align-items: end;
+    justify-content: left;
+    position: fixed;
+    background-color: #0e0e0e7c;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 1;
+
+    .filter {
+      background-color: #ffffff;
+      height: 100%;
+      padding: 2em;
+    }
+  }
+  .fade-in {
+    opacity: 10;
+    transition: opacity 5.5s ease-in-out;
+  }
+
+  .fade-out {
+    opacity: 0;
+    transition: opacity 5.5s ease-in-out;
+  }
+
+  .sort-and-filter-btns {
+    @include flex-row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1em;
+    width: 80vw;
+
+    button {
+      background-color: #fff;
+      /*     border: 1px solid black; */
+      border-radius: 5px;
+      cursor: pointer;
+      outline: none;
+      width: 15em;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }

@@ -17,10 +17,6 @@ const Header = () => {
 
   return (
     <header>
-      <div className="title">
-        <h1 onClick={() => navigate("/")}>POSTER STORE</h1>
-      </div>
-
       <nav>
         <ul>
           <li>
@@ -35,7 +31,12 @@ const Header = () => {
           <li>
             <Link to={"/InfoPage"}>Contact</Link>
           </li>
-
+        </ul>
+        <div className="title">
+          <h1 onClick={() => navigate("/")}>POSTER STORE</h1>
+          <p>For all your creative needs.</p>
+        </div>
+        <ul>
           <li>
             <Link to={"/ShoppingBagPage"}>
               <ShoppingCartIcon></ShoppingCartIcon>({sum})
@@ -43,6 +44,9 @@ const Header = () => {
           </li>
         </ul>
       </nav>
+      <div className="header-messages">
+        <p>30% off your order RIGHT NOW! </p>
+      </div>
     </header>
   );
 };

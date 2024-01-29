@@ -1,28 +1,28 @@
 header {
   @include flex-column;
-
-  align-items: center;
-  justify-content: center;
-  height: 10em;
   width: 100%;
 
-  .title {
-    border-bottom: 3px solid $primary-color;
-    width: 100%;
-    text-align: center;
-    padding-bottom: 1em;
-  }
   nav {
     @include flex-row;
     align-items: center;
-    justify-content: center;
-    border-bottom: 3px solid $primary-color;
-    width: 100%;
+    justify-content: space-between;
+    width: 90%;
+    margin-bottom: 1em;
+    ul,
+    li {
+      @include flex-row;
+      list-style-type: none;
+      align-items: center;
+      padding-left: 10px;
+    }
   }
-  ul,
-  li {
-    @include flex-row;
-    list-style-type: none;
-    padding: 10px;
+
+  .header-messages {
+    width: 100%;
+    display: flex;
+    background-color: rgba(99, 89, 108, 0.566);
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
   }
 }
