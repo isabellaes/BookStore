@@ -1,13 +1,17 @@
 header {
   @include flex-column;
   width: 100%;
-
+  align-items: center;
+  .title {
+    text-align: center;
+    width: 100%;
+  }
   nav {
     @include flex-row;
     align-items: center;
     justify-content: space-between;
     width: 90%;
-    margin-bottom: 1em;
+
     ul,
     li {
       @include flex-row;
