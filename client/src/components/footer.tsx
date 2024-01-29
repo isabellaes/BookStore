@@ -1,10 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const navigate = useNavigate();
   return (
     <footer>
-      <p>Poster Store</p>
+      <h3>Poster Store</h3>
       <Link to="/InfoPage#contact">Contact</Link>
       <Link to="/InfoPage#payment">Payment</Link>
       <Link to="/InfoPage#shipping">Shipping</Link>

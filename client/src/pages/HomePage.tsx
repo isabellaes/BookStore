@@ -348,19 +348,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-/* 
-{       {sort ? (
-        <div className="filter-container">
-          <div className={"filter"}>
-            <button onClick={handleSortVisibility}>
-              <CloseIcon></CloseIcon>
-            </button>
-            <h1>Sort</h1>
-            {/* <button onClick={handleSortByPrice}>Sort by price</button> }
-          </div>
-        </div>
-      ) : (
-        <div></div>
-      )}} 
-*/

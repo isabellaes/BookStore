@@ -4,9 +4,9 @@ import { removeFromCart, updateQuantity, clearCart } from "../store/cartSlice";
 import { RootState } from "../store/store";
 import { Product } from "../types";
 import { useNavigate } from "react-router-dom";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
+import CartItemCard from "../components/cartItemCard";
 
 interface CartItem {
   product: Product;
@@ -37,7 +37,7 @@ const ShoppingbagPage: React.FC = () => {
   const totalCost = calculateTotal(cartItems);
 
   return (
-    <div className="container-checkout">
+    <div className="container-shoppingcart">
       <Breadcrumbs aria-label="breadcrumb">
         <Link underline="hover" color="inherit" href="/">
           Home
@@ -47,41 +47,35 @@ const ShoppingbagPage: React.FC = () => {
         </Link>
       </Breadcrumbs>
       <h2>Shopping Cart</h2>
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <ul>
-          {cartItems.map((item) => (
-            <li key={item.product.id}>
-              <div className="add-to-cart-container">
-                {item.product.name} - ${item.product.price.toFixed(2)}
-                <input
-                  className="input-number"
-                  type="number"
-                  value={item.quantity}
-                  onChange={(e) =>
-                    handleUpdateQuantity(
-                      item.product.id,
-                      parseInt(e.target.value)
-                    )
-                  }
-                />
-                <button
-                  className="remove-button"
-                  onClick={() => handleRemoveFromCart(item.product.id)}
-                >
-                  Remove
-                </button>
-              </div>
-            </li>
-          ))}
-          <p>Total: ${totalCost.toFixed(2)}</p>
-          <button onClick={handleClearCart}>Clear Cart</button>
-          <button onClick={() => navigate("/CheckoutPage")}>
-            Go to checkout
-          </button>
-        </ul>
-      )}
+      <div className="cart-items">
+        {cartItems.length === 0 ? (
+          <p>Your cart is empty.</p>
+        ) : (
+          <div>
+            {cartItems.map((item) => (
+              <CartItemCard
+                key={item.product.id}
+                item={item}
+                handleUpdateQuantity={handleUpdateQuantity}
+                handleRemoveFromCart={handleRemoveFromCart}
+              ></CartItemCard>
+            ))}
+
+            <p>Total: ${totalCost.toFixed(2)}</p>
+            <div className="cart-btns">
+              <button className="btn-cart" onClick={handleClearCart}>
+                Clear Cart
+              </button>
+              <button
+                className="btn-cart"
+                onClick={() => navigate("/CheckoutPage")}
+              >
+                Go to checkout
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
