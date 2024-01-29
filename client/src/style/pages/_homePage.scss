@@ -8,7 +8,8 @@
     @include flex-row;
     align-items: center;
     justify-content: space-between;
-    width: 80vw;
+    width: 95vw;
+    margin-top: -1em;
     margin-bottom: 1em;
   }
   .categorys ul,
@@ -77,19 +78,31 @@
     opacity: 1;
 
     .filter {
-      background-color: #ffffff;
+      background-color: #ebebeb;
       height: 100%;
       padding: 2em;
-    }
-  }
-  .fade-in {
-    opacity: 10;
-    transition: opacity 5.5s ease-in-out;
-  }
+      width: 30%;
 
-  .fade-out {
-    opacity: 0;
-    transition: opacity 5.5s ease-in-out;
+      .filter-options {
+        @include flex-column;
+        padding: 2em;
+
+        h1,
+        p {
+          padding: 5px;
+        }
+
+        .buttons {
+          @include flex-row;
+
+          button {
+            padding: 5px;
+            width: 10em;
+            margin: 1em 1em 1em 0;
+          }
+        }
+      }
+    }
   }
 
   .sort-and-filter-btns {
@@ -101,7 +114,6 @@
 
     button {
       background-color: #fff;
-      /*     border: 1px solid black; */
       border-radius: 5px;
       cursor: pointer;
       outline: none;
