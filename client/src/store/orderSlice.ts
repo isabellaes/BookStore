@@ -1,31 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Order } from "../types";
 
-interface Order {
-  firstName: string;
-  lastName: string;
-  adress: string;
-  zipCode: string;
-  city: string;
-  phoneNumber: string;
-  email: string;
-  cardNumber: string;
-  date: Date;
-  cartItems: CartItem[];
-}
-interface CartItem {
-  product: Product;
-  quantity: number;
-}
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  description?: string;
-  img?: string;
-  size?: string;
-  tags?: string[];
-}
 const initialState: Order = {
   firstName: "",
   lastName: "",

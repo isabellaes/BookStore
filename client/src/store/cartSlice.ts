@@ -1,12 +1,5 @@
-// cartSlice.ts
-
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Product } from "../types";
-
-interface CartItem {
-  product: Product;
-  quantity: number;
-}
+import { CartItem } from "../types";
 
 interface CartState {
   items: CartItem[];

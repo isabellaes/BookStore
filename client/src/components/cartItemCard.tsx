@@ -1,4 +1,4 @@
-import { Product } from "../types";
+import { CartItem, Product } from "../types";
 
 interface Props {
   item: CartItem;
@@ -6,10 +6,6 @@ interface Props {
   handleRemoveFromCart: (productId: string) => void;
 }
 
-interface CartItem {
-  product: Product;
-  quantity: number;
-}
 const CartItemCard = (props: Props) => {
   return (
     <div className="cart-item">

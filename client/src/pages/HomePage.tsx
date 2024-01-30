@@ -1,36 +1,27 @@
 import MediaCard from "../components/card";
-import { Product } from "../types";
+import { CartItem, Product } from "../types";
 import { addToCart } from "../store/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import React, { useState, useEffect } from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import CircleIcon from "@mui/icons-material/Circle";
 import SearchIcon from "@mui/icons-material/Search";
 import TuneIcon from "@mui/icons-material/Tune";
 import SwapVertIcon from "@mui/icons-material/SwapVert";
-import CloseIcon from "@mui/icons-material/Close";
-
-interface CartItem {
-  product: Product;
-  quantity: number;
-}
+import FilterForm from "../components/filterForm";
 
 const HomePage = () => {
   const [searchWord, setSearchWord] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [products, setProducts] = useState<Product[] | null>();
   const [filter, setFilter] = useState<boolean>(false);
-  const [sort, setSort] = useState<boolean>(false);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedColor, setSelectedColor] = useState<string[]>([]);
   const dispatch = useDispatch();
   const items = useSelector((state: RootState) => state.product.products);
-  const handleAddToCart = (product: Product) => {
+  const handleAddToCart = (product: Product, quantity: number) => {
     const cartItem: CartItem = {
       product: product,
-      quantity: 1,
+      quantity: quantity,
     };
     dispatch(addToCart(cartItem));
   };
@@ -62,23 +53,9 @@ const HomePage = () => {
       setFilter(true);
     }
   }
-  function handleSortVisibility() {
-    if (sort) {
-      setSort(false);
-    } else {
-      setSort(true);
-    }
-  }
-  function sortByPrice(a: Product, b: Product): number {
-    return a.price - b.price;
-  }
+
   function handleSortByPrice() {
-    if (products) {
-      let productsSortedByPrice;
-      productsSortedByPrice = products.sort(sortByPrice);
-      setProducts(productsSortedByPrice);
-      setSort(false);
-    }
+    //sort function
   }
 
   useEffect(() => {
@@ -92,53 +69,12 @@ const HomePage = () => {
     setCurrentPage(value);
   };
 
-  function filterProductsByTag(tag: string[]): Product[] {
-    return items.filter((product) =>
-      tag.some((category) => product.tags?.includes(category))
-    );
-  }
-  function toggleTags(tag: string): void {
-    const updatedTags = selectedColor.includes(tag)
-      ? selectedColor.filter((c) => c !== tag)
-      : [...selectedColor, tag];
-
-    setSelectedColor(updatedTags);
-  }
-
-  function toggleCategory(category: string): void {
-    const updatedCategories = selectedCategories.includes(category)
-      ? selectedCategories.filter((c) => c !== category)
-      : [...selectedCategories, category];
-
-    setSelectedCategories(updatedCategories);
-  }
-
-  function filterProductsByCategories(categories: string[]): Product[] {
-    return items.filter((product) =>
-      categories.some((category) => product.tags?.includes(category))
-    );
-  }
-
-  function applyFilters(e: { preventDefault: () => void }) {
-    e.preventDefault();
-    let filteredProducts = [...items];
-
-    if (selectedCategories) {
-      filteredProducts = filterProductsByCategories(selectedCategories);
-    }
-
-    if (selectedColor) {
-      filteredProducts = filterProductsByTag(selectedColor);
-    }
+  function applyFilters(filteredProducts: Product[]) {
     if (filteredProducts.length > 0) {
       setProducts(filteredProducts);
     }
 
     setFilter(false);
-  }
-  function clearFilter(): void {
-    setSelectedCategories([]);
-    setSelectedColor([]);
   }
 
   return (
@@ -171,147 +107,17 @@ const HomePage = () => {
           <TuneIcon></TuneIcon>
           FILTER
         </button>
-        <button className="sort-button" onClick={handleSortVisibility}>
+        <button className="sort-button" onClick={handleSortByPrice}>
           <SwapVertIcon></SwapVertIcon>
           SORT
         </button>
       </div>
 
       {filter ? (
-        <div className="filter-container">
-          <div className={"filter"}>
-            <button onClick={handleFilterVisibility}>
-              <CloseIcon></CloseIcon>
-            </button>
-            <div className="filter-options">
-              <h2>Filter</h2>
-              <div>
-                <p>{selectedCategories.join(" ")}</p>
-                <p>{selectedColor.join(" ")}</p>
-              </div>
-              <form
-                id="searchForm"
-                onSubmit={(e) => {
-                  e.currentTarget.reset();
-                }}
-              >
-                <div className="filter-category">
-                  Categoies
-                  <ul>
-                    <li>
-                      <input
-                        type="checkbox"
-                        name="animal"
-                        id="animal"
-                        onChange={() => toggleCategory("animal")}
-                        checked={selectedCategories.includes("animal")}
-                        value="animal"
-                      />
-                      <label htmlFor="animal">Animal</label>
-                    </li>
-                    <li>
-                      <input
-                        type="checkbox"
-                        name="plant"
-                        id="plant"
-                        onChange={() => toggleCategory("plant")}
-                        checked={selectedCategories.includes("plant")}
-                        value="plant"
-                      />
-                      <label htmlFor="plant">Plants</label>
-                    </li>
-                    <li>
-                      <input
-                        type="checkbox"
-                        name="flower"
-                        id="flower"
-                        onChange={() => toggleCategory("flower")}
-                        checked={selectedCategories.includes("flower")}
-                      />
-                      <label htmlFor="flower">Flower</label>
-                    </li>
-                    <li>
-                      <input
-                        onChange={() => toggleCategory("abstract")}
-                        checked={selectedCategories.includes("abstract")}
-                        type="checkbox"
-                        name="abstract"
-                        id="abstract"
-                      />
-                      <label htmlFor="abstract">Abstract</label>
-                    </li>
-                    <li>
-                      <input
-                        type="checkbox"
-                        name="quote"
-                        id="quote"
-                        onChange={() => toggleCategory("quote")}
-                        checked={selectedCategories.includes("quote")}
-                      />
-                      <label htmlFor="quote">Quote</label>
-                    </li>
-                  </ul>
-                </div>
-                <div className="filter-color">
-                  Colors
-                  <ul>
-                    <li>
-                      <a onClick={() => toggleTags("green")}>
-                        <CircleIcon sx={{ color: "green" }}></CircleIcon>
-                      </a>
-                    </li>
-                    <li>
-                      <a onClick={() => toggleTags("yellow")}>
-                        <CircleIcon sx={{ color: "yellow" }}></CircleIcon>
-                      </a>
-                    </li>
-                    <li>
-                      <a onClick={() => toggleTags("black")}>
-                        <CircleIcon sx={{ color: "black" }}></CircleIcon>
-                      </a>
-                    </li>
-                    <li>
-                      <a onClick={() => toggleTags("white")}>
-                        {" "}
-                        <CircleIcon sx={{ color: "white" }}></CircleIcon>
-                      </a>
-                    </li>
-                    <li>
-                      <a onClick={() => toggleTags("pink")}>
-                        {" "}
-                        <CircleIcon sx={{ color: "pink" }}></CircleIcon>
-                      </a>
-                    </li>
-                    <li>
-                      <a onClick={() => toggleTags("purple")}>
-                        {" "}
-                        <CircleIcon sx={{ color: "purple" }}></CircleIcon>
-                      </a>
-                    </li>
-                    <li>
-                      <a onClick={() => toggleTags("red")}>
-                        {" "}
-                        <CircleIcon sx={{ color: "red" }}></CircleIcon>
-                      </a>
-                    </li>
-                    <li>
-                      <a onClick={() => toggleTags("blue")}>
-                        {" "}
-                        <CircleIcon sx={{ color: "blue" }}></CircleIcon>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="buttons">
-                  <button onClick={applyFilters}>Apply filter</button>
-                  <button type="submit" onClick={clearFilter}>
-                    Clear filter
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+        <FilterForm
+          handleApplyFilter={applyFilters}
+          handleFilterVisibility={handleFilterVisibility}
+        ></FilterForm>
       ) : (
         <p></p>
       )}

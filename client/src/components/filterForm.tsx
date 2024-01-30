@@ -1,21 +1,17 @@
 import { useState } from "react";
 import { Product } from "../types";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import CircleIcon from "@mui/icons-material/Circle";
-import {
-  clearFilterdProducts,
-  setFilterdProducts,
-} from "../store/productSlice";
+import CloseIcon from "@mui/icons-material/Close";
 
 interface Props {
-  handlyApplyFilter: () => void;
+  handleApplyFilter: (items: Product[]) => void;
+  handleFilterVisibility: () => void;
 }
 const FilterForm = (props: Props) => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedColor, setSelectedColor] = useState<string[]>([]);
-
-  const dispatch = useDispatch();
 
   const items = useSelector((state: RootState) => state.product.products);
 
@@ -46,7 +42,7 @@ const FilterForm = (props: Props) => {
     );
   }
 
-  function applyFilters(e: { preventDefault: () => void }) {
+  function applyFilters(e: { preventDefault: () => void }): Product[] {
     e.preventDefault();
     let filteredProducts = [...items];
 
@@ -57,20 +53,21 @@ const FilterForm = (props: Props) => {
     if (selectedColor) {
       filteredProducts = filterProductsByTag(selectedColor);
     }
-
-    dispatch(setFilterdProducts(filteredProducts));
-    props.handlyApplyFilter();
+    return filteredProducts;
   }
-  function clearFilter(): void {
+
+  function handleClearFilter() {
     setSelectedCategories([]);
     setSelectedColor([]);
-    dispatch(clearFilterdProducts());
   }
+
   return (
-    <div className="filter">
-      <h1>Filter</h1>
-      <div className="aside">
-        <div className="list">
+    <div className="filter-container">
+      <div className={"filter"}>
+        <button onClick={props.handleFilterVisibility}>
+          <CloseIcon></CloseIcon>
+        </button>
+        <div className="filter-options">
           <h2>Filter</h2>
           <div>
             <p>{selectedCategories.join(" ")}</p>
@@ -110,7 +107,7 @@ const FilterForm = (props: Props) => {
                 <li>
                   <input
                     type="checkbox"
-                    name=""
+                    name="flower"
                     id="flower"
                     onChange={() => toggleCategory("flower")}
                     checked={selectedCategories.includes("flower")}
@@ -122,7 +119,7 @@ const FilterForm = (props: Props) => {
                     onChange={() => toggleCategory("abstract")}
                     checked={selectedCategories.includes("abstract")}
                     type="checkbox"
-                    name=""
+                    name="abstract"
                     id="abstract"
                   />
                   <label htmlFor="abstract">Abstract</label>
@@ -130,7 +127,7 @@ const FilterForm = (props: Props) => {
                 <li>
                   <input
                     type="checkbox"
-                    name=""
+                    name="quote"
                     id="quote"
                     onChange={() => toggleCategory("quote")}
                     checked={selectedCategories.includes("quote")}
@@ -189,11 +186,18 @@ const FilterForm = (props: Props) => {
                 </li>
               </ul>
             </div>
-
-            <button onClick={applyFilters}>Apply filter</button>
-            <button type="submit" onClick={clearFilter}>
-              Clear filter
-            </button>
+            <div className="buttons">
+              <button
+                onClick={(e) => {
+                  props.handleApplyFilter(applyFilters(e));
+                }}
+              >
+                Apply filter
+              </button>
+              <button type="submit" onClick={handleClearFilter}>
+                Clear filter
+              </button>
+            </div>
           </form>
         </div>
       </div>

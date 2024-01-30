@@ -2,16 +2,12 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, updateQuantity, clearCart } from "../store/cartSlice";
 import { RootState } from "../store/store";
-import { Product } from "../types";
+import { CartItem, Product } from "../types";
 import { useNavigate } from "react-router-dom";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 import CartItemCard from "../components/cartItemCard";
 
-interface CartItem {
-  product: Product;
-  quantity: number;
-}
 const ShoppingbagPage: React.FC = () => {
   const navigate = useNavigate();
   const cartItems = useSelector((state: RootState) => state.cart.items);

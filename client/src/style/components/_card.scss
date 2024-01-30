@@ -17,7 +17,14 @@
   .product-info {
     margin: 1em 0 1em 0;
   }
-  button {
+
+  .add-to-cart-container {
+    display: flex;
+    max-width: 200px;
+    margin-top: 1em;
+  }
+
+  .add-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,9 +32,9 @@
     background-color: #007bff;
     color: #fff;
     border: 1px solid #007bff;
-    border-radius: 5px;
+    border-radius: 0 5px 5px 0;
     cursor: pointer;
     outline: none;
-    width: 5em;
+    width: 4em;
   }
 }

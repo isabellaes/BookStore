@@ -50,16 +50,7 @@ import image69 from "../images/thomas-evans-NVXY8_M1n40-unsplash.jpg";
 import image70 from "../images/tirza-van-dijk-cNGUw-CEsp0-unsplash.jpg";
 import image71 from "../images/usgs-hoS3dzgpHzw-unsplash.jpg";
 import image73 from "../images/yuichi-kageyama-4ByFHyNdoD4-unsplash.jpg";
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  description?: string;
-  img?: string;
-  size?: string;
-  tags?: string[];
-}
+import { Product } from "../types";
 
 interface ProductState {
   products: Product[];

@@ -1,19 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { Product } from "../types";
+import { CartItem, Product } from "../types";
 import { addToCart } from "../store/cartSlice";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Rating from "@mui/material/Rating";
 import { useState } from "react";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
-
-interface CartItem {
-  product: Product;
-  quantity: number;
-}
 
 const ProductPage = () => {
   const [value, setValue] = useState<number | null>(4);

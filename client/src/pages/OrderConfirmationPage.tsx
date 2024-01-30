@@ -1,19 +1,9 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useNavigate } from "react-router-dom";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
+import { CartItem } from "../types";
 
-interface CartItem {
-  product: Product;
-  quantity: number;
-}
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-}
 const OrderConfirmationPage = () => {
   const order = useSelector((state: RootState) => state.order);
   console.log(order);
@@ -23,7 +13,7 @@ const OrderConfirmationPage = () => {
     }, 0);
   }
   const totalCost = calculateTotal(order.cartItems);
-  const navigate = useNavigate();
+
   return (
     <div>
       <Breadcrumbs aria-label="breadcrumb">

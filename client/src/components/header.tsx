@@ -2,6 +2,8 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { RootState } from "../store/store";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 const Header = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -25,16 +27,14 @@ const Header = () => {
       <nav>
         <ul>
           <li>
-            <Link to={"/"}>Home</Link>
+            <Link to={"/"}>
+              <HomeIcon></HomeIcon>
+            </Link>
           </li>
           <li>
-            <Link to={"/InfoPage"}>About</Link>
-          </li>
-          <li>
-            <Link to={"/InfoPage"}>Faq</Link>
-          </li>
-          <li>
-            <Link to={"/InfoPage"}>Contact</Link>
+            <Link to={"/InfoPage"}>
+              <HelpOutlineIcon></HelpOutlineIcon>
+            </Link>
           </li>
         </ul>
         <ul>
