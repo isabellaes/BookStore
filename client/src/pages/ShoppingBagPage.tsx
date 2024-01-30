@@ -73,16 +73,15 @@ const ShoppingbagPage: React.FC = () => {
 
                 <div className="update-cartitem-btn">
                   <button
-                    onClick={() => handleIncreaseQuantity(item.product.id)}
-                  >
-                    <AddCircleOutlineIcon></AddCircleOutlineIcon>
-                  </button>
-                  <p className="item-quantity"> {item.quantity}</p>
-
-                  <button
                     onClick={() => handleDecreaseQuantity(item.product.id)}
                   >
                     <RemoveCircleOutlineIcon></RemoveCircleOutlineIcon>
+                  </button>
+                  <p className="item-quantity"> {item.quantity}</p>
+                  <button
+                    onClick={() => handleIncreaseQuantity(item.product.id)}
+                  >
+                    <AddCircleOutlineIcon></AddCircleOutlineIcon>
                   </button>
                 </div>
               </div>

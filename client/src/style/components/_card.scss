@@ -12,6 +12,7 @@
     border: 1px solid rgba(0, 0, 0, 0.445);
     padding: 1em;
     overflow: hidden;
+    cursor: pointer;
   }
 
   .product-info {
@@ -22,6 +23,9 @@
     @include flex-row;
     max-width: 200px;
     margin-top: 1em;
-    @include dual-buttons(4em, #007bff);
+    @include dual-buttons(4em, #5ca6f4);
+    button:hover {
+      background-color: #016de1;
+    }
   }
 }

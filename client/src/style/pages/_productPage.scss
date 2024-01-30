@@ -16,7 +16,10 @@
     @include flex-row;
     max-width: 200px;
     margin-top: 1em;
-    @include dual-buttons(6em, #007bff);
+    @include dual-buttons(6em, #5ca6f4);
+    button:hover {
+      background-color: #016de1;
+    }
   }
 
   .img-product {

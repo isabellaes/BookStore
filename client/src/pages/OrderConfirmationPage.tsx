@@ -13,7 +13,11 @@ const OrderConfirmationPage = () => {
       return total + cartItem.product.price * cartItem.quantity;
     }, 0);
   }
-  const totalCost = calculateTotal(order.cartItems);
+
+  let totalCost;
+  if (order.order) {
+    totalCost = calculateTotal(order.order.cartItems);
+  }
 
   return (
     <div className="container-orderConfirmation">
@@ -27,27 +31,26 @@ const OrderConfirmationPage = () => {
       </Breadcrumbs>
 
       <h1>Thank you for your order!</h1>
-      <p>Products</p>
+      <h4>Products</h4>
       <div>
-        {order.cartItems.map((item) => (
+        {order.order?.cartItems.map((item) => (
           <CartItemCard key={item.product.id} item={item}></CartItemCard>
         ))}
       </div>
-      <p>Total: ${totalCost.toFixed(2)}</p>
+      <h2>Total: ${totalCost?.toFixed(2)}</h2>
 
-      <p>Shipping and payment</p>
-      {/*    <p>{order.firstName}</p>
-        <p>{order.lastName}</p>
-        <p>{order.adress}</p>
-        <p>{order.city}</p>
-        <p>{order.zipCode}</p>
-        <p>{order.phoneNumber}</p>
-        <p>{order.email}</p> */}
-      <p>{order.date.toLocaleDateString()}</p>
       <p>
+        An Email is sent to
+        <span> {order.order?.user.email}</span> with your orderconfirmation.
+      </p>
+      <p>
+        If you have any questions please contact us at
+        <span> info@posterstore.se</span>
+      </p>
+      <h2>
         You will recieve your order in 1-3 days. <br />
         Welcome back!
-      </p>
+      </h2>
     </div>
   );
 };

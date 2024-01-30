@@ -16,13 +16,14 @@ export interface CartItem {
 
 export interface Order {
   id: number;
-  payment: string;
   date: Date;
   cartItems: CartItem[];
+  user: User;
+  payment: PaymentMethod;
 }
 
 export interface User {
-  id: number;
+  id?: number;
   firstName: string;
   lastName: string;
   adress: string;
@@ -33,8 +34,8 @@ export interface User {
 }
 
 export interface PaymentMethod {
-  card: string;
-  invoice: string;
+  card?: Card;
+  invoice?: Invoice;
 }
 
 export interface Card {
@@ -48,11 +49,4 @@ export interface Invoice {
   user: User;
   amount: number;
   orderNumber: number;
-}
-
-export interface OrderConfirmation {
-  id: number;
-  user: User;
-  order: Order;
-  payment: PaymentMethod;
 }

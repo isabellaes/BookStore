@@ -18,6 +18,7 @@ const CheckoutPage: React.FC = () => {
   const [city, setCity] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [cardNumber, setCardNumber] = useState("");
+  const [expirationDate, setExpirationDate] = useState("");
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,14 +33,31 @@ const CheckoutPage: React.FC = () => {
   const totalCost = calculateTotal(cartItems);
   function onsubmit(e: { preventDefault: () => void }) {
     e.preventDefault();
-    const order: Order = {
-      cartItems: cartItems,
-      date: new Date(),
-      id: 0,
-      payment: "",
-    };
+    if (expirationDate) {
+      const order: Order = {
+        cartItems: cartItems,
+        date: new Date(),
+        id: 0,
+        payment: {
+          card: {
+            cardnumber: Number(cardNumber),
+            name: firstName + " " + lastName,
+            expirationDate: new Date(expirationDate),
+          },
+        },
+        user: {
+          firstName: firstName,
+          lastName: lastName,
+          adress: adress,
+          zipCode: zipCode,
+          city: city,
+          email: email,
+          phoneNumber: phoneNumber,
+        },
+      };
+      handleCreateOrder(order);
+    }
 
-    handleCreateOrder(order);
     setTimeout(() => {
       dispatch(clearCart());
       handldeNavigation();
@@ -67,11 +85,11 @@ const CheckoutPage: React.FC = () => {
           <CartItemCard key={item.product.id} item={item}></CartItemCard>
         ))}
       </div>
-      <p>Total: ${totalCost.toFixed(2)}</p>
+      <h3>Total: ${totalCost.toFixed(2)}</h3>
       <div className="shipping">
-        <h3>Shipping and payment</h3>
         <form onSubmit={onsubmit}>
-          <label htmlFor="FirstName">FirstName:</label>
+          <h3>Shipping</h3>
+          <label htmlFor="FirstName">Firstname:</label>
           <input
             type="text"
             id="FirstName"
@@ -80,7 +98,7 @@ const CheckoutPage: React.FC = () => {
               setFirstName(e.target.value);
             }}
           />
-          <label htmlFor="LastName">FirstName:</label>
+          <label htmlFor="LastName">Lastname:</label>
           <input
             type="text"
             id="LastName"
@@ -108,7 +126,7 @@ const CheckoutPage: React.FC = () => {
             placeholder="City"
             onChange={(e) => setCity(e.target.value)}
           />
-          <label htmlFor="PhoneNumber">PhoneNumber:</label>
+          <label htmlFor="PhoneNumber">Phonenumber:</label>
           <input
             type="text"
             id="PhoneNumber"
@@ -122,12 +140,20 @@ const CheckoutPage: React.FC = () => {
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label htmlFor="Card">CardNumber</label>
+          <h3>Payment</h3>
+          <label htmlFor="Card">Cardnumber:</label>
           <input
             type="text"
             id="Card"
             placeholder="CardNumber"
             onChange={(e) => setCardNumber(e.target.value)}
+          />
+          <label htmlFor="expiration-date">Expiration date:</label>
+          <input
+            type="date"
+            id="expiration-date"
+            placeholder="Date"
+            onChange={(e) => setExpirationDate(e.target.value)}
           />
 
           <button type="submit">Submit</button>

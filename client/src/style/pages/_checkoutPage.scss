@@ -2,9 +2,7 @@
   @include container-standard;
   @include flex-column;
   align-items: center;
-  form {
-    @include flex-column;
-  }
+
   h2 {
     padding-top: 1em;
   }
@@ -14,13 +12,30 @@
     margin-top: 1em;
     padding: 1em;
     align-items: center;
-
+    form {
+      @include flex-column;
+      width: 500px;
+      border: 1px solid rgba(0, 0, 0, 0.703);
+      padding: 1em;
+    }
     h3 {
+      padding: 1em 0 1em 0;
+      margin-bottom: 1em;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.703);
+      text-align: center;
+    }
+
+    label {
       padding-bottom: 1em;
+    }
+
+    input {
+      padding: 5px;
     }
 
     button {
       @include standard-btn(10em);
+      margin-left: 35%;
     }
   }
 }

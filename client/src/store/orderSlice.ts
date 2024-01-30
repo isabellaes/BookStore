@@ -1,18 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Order } from "../types";
 
-const initialState: Order = {
-  id: 0,
-  date: new Date(),
-  payment: "",
-  cartItems: [],
+interface OrderState {
+  order: Order | null;
+}
+
+const initialState: OrderState = {
+  order: null,
 };
 const orderSlice = createSlice({
   name: "order",
   initialState,
   reducers: {
     createOrder: (state, action: PayloadAction<Order>) => {
-      return action.payload;
+      state.order = action.payload;
     },
   },
 });
