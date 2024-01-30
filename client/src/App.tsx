@@ -11,10 +11,6 @@ import ShoppingbagPage from "./pages/ShoppingBagPage";
 import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 import InfoPage from "./pages/InfoPage";
 import "./style/layout.scss";
-import CategoryPageAbstract from "./pages/Category/CategoryPageAbstract";
-import CategoryPageAnimals from "./pages/Category/CategoryPageAnimals";
-import CategoryPagePlants from "./pages/Category/CategoryPagePlants";
-import CategoryPageQuote from "./pages/Category/CategoryPageQuote";
 
 function App() {
   return (
@@ -35,16 +31,6 @@ function App() {
           <Route path="/ProductPage/:Id" element={<ProductPage />} />
           <Route path="/InfoPage" element={<InfoPage />} />
           <Route path="*" element={<PageNotFound />} />
-          <Route
-            path="/CategoryPageAbstract"
-            element={<CategoryPageAbstract />}
-          />
-          <Route
-            path="/CategoryPageAnimals"
-            element={<CategoryPageAnimals />}
-          />
-          <Route path="/CategoryPageQuote" element={<CategoryPageQuote />} />
-          <Route path="/CategoryPagePlants" element={<CategoryPagePlants />} />
         </Routes>
         <Footer></Footer>
       </BrowserRouter>
