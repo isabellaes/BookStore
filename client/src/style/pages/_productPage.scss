@@ -13,28 +13,19 @@
     margin: 1em 0 1em 0;
   }
   .add-to-cart-container {
-    display: flex;
+    @include flex-row;
     max-width: 200px;
-    margin-top: 2em;
+    margin-top: 1em;
+    @include dual-buttons(6em, #007bff);
   }
 
-  .add-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
-    background-color: #007bff;
-    color: #fff;
-    border: 1px solid #007bff;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    outline: none;
-    width: 7em;
+  .img-product {
+    width: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.779);
+    padding: 1em;
   }
-}
 
-.img-product {
-  width: 300px;
-  border: 1px solid rgba(0, 0, 0, 0.779);
-  padding: 1em;
+  .row {
+    @include flex-row;
+  }
 }

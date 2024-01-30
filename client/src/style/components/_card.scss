@@ -2,7 +2,8 @@
   @include flex-column;
   margin: 1em;
   width: 250px;
-  .img {
+  height: 500px;
+  img {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,28 +14,14 @@
     overflow: hidden;
   }
 
-  height: 500px;
   .product-info {
     margin: 1em 0 1em 0;
   }
 
   .add-to-cart-container {
-    display: flex;
+    @include flex-row;
     max-width: 200px;
     margin-top: 1em;
-  }
-
-  .add-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
-    background-color: #007bff;
-    color: #fff;
-    border: 1px solid #007bff;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    outline: none;
-    width: 4em;
+    @include dual-buttons(4em, #007bff);
   }
 }

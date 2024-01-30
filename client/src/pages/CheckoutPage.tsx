@@ -1,29 +1,14 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store/store";
-import { Product } from "../types";
+import { CartItem, Order } from "../types";
 import { createOrder } from "../store/orderSlice";
 import { useNavigate } from "react-router-dom";
 import { clearCart } from "../store/cartSlice";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
-interface CartItem {
-  product: Product;
-  quantity: number;
-}
-interface Order {
-  firstName: string;
-  lastName: string;
-  adress: string;
-  zipCode: string;
-  city: string;
-  phoneNumber: string;
-  email: string;
-  cardNumber: string;
-  cartItems: CartItem[];
-  date: Date;
-}
+import CartItemCard from "../components/cartItemCard";
+
 const CheckoutPage: React.FC = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -48,16 +33,10 @@ const CheckoutPage: React.FC = () => {
   function onsubmit(e: { preventDefault: () => void }) {
     e.preventDefault();
     const order: Order = {
-      firstName: firstName,
-      lastName: lastName,
-      adress: adress,
-      zipCode: zipCode,
-      city: city,
-      phoneNumber: phoneNumber,
-      email: email,
-      cardNumber: cardNumber,
       cartItems: cartItems,
       date: new Date(),
+      id: 0,
+      payment: "",
     };
 
     handleCreateOrder(order);
@@ -83,18 +62,11 @@ const CheckoutPage: React.FC = () => {
         </Link>
       </Breadcrumbs>
       <h2>Checkout</h2>
-
-      {cartItems.map((item) => (
-        <div key={item.product.id} className="cart-item">
-          <div className="left">
-            <img src={item.product.img} alt="" />
-          </div>
-          <div className="rigth">
-            {item.product.name} - ${item.product.price.toFixed(2)} - Quantity:{" "}
-            {item.quantity}
-          </div>
-        </div>
-      ))}
+      <div>
+        {cartItems.map((item) => (
+          <CartItemCard key={item.product.id} item={item}></CartItemCard>
+        ))}
+      </div>
       <p>Total: ${totalCost.toFixed(2)}</p>
       <div className="shipping">
         <h3>Shipping and payment</h3>

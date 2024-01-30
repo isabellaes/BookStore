@@ -1,0 +1,20 @@
+.cart-item {
+  padding: 1em;
+  @include flex-row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 400px;
+
+  .left,
+  .rigth {
+    @include flex-column;
+    width: 50%;
+    padding: 1em;
+  }
+
+  img {
+    width: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.445);
+    padding: 1em;
+  }
+}

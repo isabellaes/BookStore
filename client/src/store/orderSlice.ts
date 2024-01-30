@@ -2,16 +2,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Order } from "../types";
 
 const initialState: Order = {
-  firstName: "",
-  lastName: "",
-  adress: "",
-  zipCode: "",
-  city: "",
-  phoneNumber: "",
-  email: "",
-  cardNumber: "",
-  cartItems: [],
+  id: 0,
   date: new Date(),
+  payment: "",
+  cartItems: [],
 };
 const orderSlice = createSlice({
   name: "order",

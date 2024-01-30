@@ -38,22 +38,23 @@ const FilterForm = (props: Props) => {
 
   function filterProductsByCategories(categories: string[]): Product[] {
     return items.filter((product) =>
-      categories.some((category) => product.tags?.includes(category))
+      categories.some((category) => product.category === category)
     );
   }
 
   function applyFilters(e: { preventDefault: () => void }): Product[] {
     e.preventDefault();
-    let filteredProducts = [...items];
-
+    let filteredProductsByCategory = [...items];
+    let filterdProductsByColor = [...items];
     if (selectedCategories) {
-      filteredProducts = filterProductsByCategories(selectedCategories);
+      filteredProductsByCategory =
+        filterProductsByCategories(selectedCategories);
     }
 
     if (selectedColor) {
-      filteredProducts = filterProductsByTag(selectedColor);
+      filterdProductsByColor = filterProductsByTag(selectedColor);
     }
-    return filteredProducts;
+    return filteredProductsByCategory.concat(filterdProductsByColor);
   }
 
   function handleClearFilter() {
@@ -104,16 +105,7 @@ const FilterForm = (props: Props) => {
                   />
                   <label htmlFor="plant">Plants</label>
                 </li>
-                <li>
-                  <input
-                    type="checkbox"
-                    name="flower"
-                    id="flower"
-                    onChange={() => toggleCategory("flower")}
-                    checked={selectedCategories.includes("flower")}
-                  />
-                  <label htmlFor="flower">Flower</label>
-                </li>
+
                 <li>
                   <input
                     onChange={() => toggleCategory("abstract")}

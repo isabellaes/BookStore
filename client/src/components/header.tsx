@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import Badge from "@mui/material/Badge";
 
 const Header = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -40,7 +41,9 @@ const Header = () => {
         <ul>
           <li>
             <Link to={"/ShoppingBagPage"}>
-              <ShoppingCartIcon></ShoppingCartIcon>({sum})
+              <Badge badgeContent={sum} color="primary">
+                <ShoppingCartIcon></ShoppingCartIcon>
+              </Badge>
             </Link>
           </li>
         </ul>

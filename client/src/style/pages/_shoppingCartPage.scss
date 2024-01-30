@@ -1,32 +1,42 @@
 .container-shoppingcart {
-  min-height: 100vh;
-  max-width: 100vw;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  padding: 1em;
+  @include container-standard;
+  @include flex-column;
   align-items: center;
 
-  .box-breadcrumbs {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-  }
   h2 {
     padding-top: 1em;
   }
+
+  .update-cartitem-btn {
+    @include flex-row;
+    margin-top: 1em;
+    align-items: center;
+    button {
+      border: none;
+      background-color: inherit;
+      padding-top: 1em;
+    }
+    p {
+      padding: 1.5em 1em 1em 1em;
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+  .total-cost {
+    padding: 1em;
+  }
   .cart-btns {
     @include flex-row;
+    align-items: center;
+    justify-content: center;
     .btn-cart {
-      background-color: #fff;
-      border-radius: 5px;
-      cursor: pointer;
-      outline: none;
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 1em;
+      @include standard-btn(10em);
     }
+  }
+
+  .remove-button {
+    border: none;
+    background-color: inherit;
+    padding: 1em;
   }
 }

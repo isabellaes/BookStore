@@ -42,7 +42,7 @@ const HomePage = () => {
   }
   function handleCategoryChoise(category: string) {
     const filtered = items.filter((product) => {
-      return product.tags?.includes(category);
+      return product.category === category;
     });
     setProducts(filtered);
   }

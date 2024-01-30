@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { CartItem, Product } from "../types";
@@ -14,7 +14,6 @@ const ProductPage = () => {
   const [quantity, setQuantity] = useState<number>(1);
   const params = useParams<{ Id: string }>();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const handleAddToCart = (product: Product) => {
     const cartItem: CartItem = {
       product: product,

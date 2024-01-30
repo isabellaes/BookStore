@@ -12,13 +12,11 @@ export default function Card(props: props) {
   const navigate = useNavigate();
   return (
     <div className="card">
-      <div className="img">
-        <img
-          src={props.product.img}
-          alt="product-img"
-          onClick={() => navigate(`/ProductPage/${props.product.id}`)}
-        />
-      </div>
+      <img
+        src={props.product.img}
+        alt="product-img"
+        onClick={() => navigate(`/ProductPage/${props.product.id}`)}
+      />
 
       <div className="product-info">
         <h3>{props.product.name}</h3>

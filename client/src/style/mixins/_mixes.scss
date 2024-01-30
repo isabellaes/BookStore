@@ -1,11 +1,16 @@
 @import "../variables/colors";
 
-@mixin standard-btn {
+@mixin standard-btn($width) {
+  background-color: #fff;
+  border-radius: 5px;
   cursor: pointer;
-  color: #fff;
-  padding: 10px;
-  background-color: $btn-color;
   outline: none;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em;
+  width: $width;
 }
 
 @mixin container-standard {
@@ -23,4 +28,27 @@
 @mixin flex-column {
   display: flex;
   flex-direction: column;
+}
+
+@mixin dual-buttons($width, $color) {
+  .input-number {
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    width: 3em;
+  }
+  .add-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    background-color: $color;
+    color: #fff;
+    border: 1px solid $color;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    outline: none;
+    width: $width;
+  }
 }
