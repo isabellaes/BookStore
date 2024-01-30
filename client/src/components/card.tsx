@@ -7,7 +7,7 @@ interface props {
   addToCart: (product: Product, quantity: number) => void;
 }
 
-export default function MediaCard(props: props) {
+export default function Card(props: props) {
   const [quantity, setQuantity] = useState<number>(1);
   const navigate = useNavigate();
   return (

@@ -1,4 +1,4 @@
-import MediaCard from "../components/card";
+import Card from "../components/card";
 import { CartItem, Product } from "../types";
 import { addToCart } from "../store/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -126,11 +126,11 @@ const HomePage = () => {
         <div className="container">
           {displayedProducts ? (
             displayedProducts?.map((product) => (
-              <MediaCard
+              <Card
                 key={product.id}
                 product={product}
                 addToCart={handleAddToCart}
-              ></MediaCard>
+              ></Card>
             ))
           ) : (
             <p>Inga produkter hittades.</p>
