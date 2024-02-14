@@ -1,5 +1,7 @@
 # Webbshop - (under construction)
 
+Webbshop - Simple webbshop only for portfolio.
+
 ## Installation
 
 Clone repository
@@ -22,14 +24,6 @@ Backend
 cd server
 dotnet run
 ```
-
-## About this project
-
-Webbshop - Simple webbshop only for portfolio.
-[x] - Filter products
-[x] - Add to cart
-[x] - Searchfunction
-[x] - Place order
 
 ### Stack
 
