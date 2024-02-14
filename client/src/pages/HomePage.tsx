@@ -36,7 +36,6 @@ const HomePage = () => {
     });
     if (filtered.length > 0) {
       setProducts(filtered);
-      console.log(filtered);
     }
     setCurrentPage(1);
   }
@@ -55,7 +54,7 @@ const HomePage = () => {
   }
 
   function handleSortByPrice() {
-    //sort function
+    //sort funct
   }
 
   useEffect(() => {
