@@ -9,8 +9,8 @@ public class Context : DbContext
     {
     }
 
-    public DbSet<Product> Product { get; set; }
-    public DbSet<Order> Order { get; set; }
-    public DbSet<User> User { get; set; }
+    public DbSet<Product> Product { get; set; } = null!;
+    public DbSet<Order> Order { get; set; } = null!;
+    public DbSet<User> User { get; set; } = null!;
 
 }
