@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Models;
+using context;
+using repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,15 +11,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
 
-builder.Services.AddDbContext<Context>(options =>
-{
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"), options =>
-    {
-        options.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
-    });
-});
+
+
+builder.Services.AddDbContext<Context>(opt =>
+    opt.UseInMemoryDatabase("Webbshop"));
+
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

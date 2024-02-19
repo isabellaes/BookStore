@@ -1,22 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using models;
-using Models;
+using context;
+using repository;
 
 [ApiController]
 [Route("[controller]")]
 public class ProductController : ControllerBase
 {
-    private readonly Context _context;
-    public ProductController(Context context)
+    private readonly IProductRepository _repository;
+    public ProductController(IProductRepository repository)
     {
-        _context = context;
+
+        _repository = repository;
     }
 
     [HttpGet("Get")]
     public async Task<IEnumerable<Product>> GetAllProducts()
     {
-        return await _context.Product.ToListAsync();
+        return await _repository.GetAllProducts();
 
     }
 }

@@ -1,17 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
-using Models;
 using Microsoft.EntityFrameworkCore;
 using models;
+using repository;
 
 
 [ApiController]
 [Route("[controller]")]
 public class OrderController : ControllerBase
 {
-    private readonly Context _context;
-    public OrderController(Context context)
+    private readonly IOrderRepository _repository;
+    public OrderController(IOrderRepository repository)
     {
-        _context = context;
+        _repository = repository;
     }
 
     [HttpPost("Create")]
@@ -19,10 +19,15 @@ public class OrderController : ControllerBase
     {
         try
         {
-            _context.Order.AddAsync(order);
-            await _context.SaveChangesAsync();
-
-            return Ok();
+            var result = await _repository.CreateOrder(order);
+            if (result)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
         catch (System.Exception)
         {
