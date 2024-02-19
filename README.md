@@ -18,7 +18,7 @@ npm install
 npm start
 ```
 
-Backend
+Backend . Not implemented
 
 ```sh
 cd server
