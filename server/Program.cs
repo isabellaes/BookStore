@@ -13,9 +13,13 @@ builder.Services.AddSwaggerGen();
 
 
 
-
-builder.Services.AddDbContext<Context>(opt =>
-    opt.UseInMemoryDatabase("Webbshop"));
+builder.Services.AddDbContext<Context>(options =>
+{
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"), options =>
+    {
+        options.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
+    });
+});
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
