@@ -53,9 +53,7 @@ const HomePage = () => {
     }
   }
 
-  function handleSortByPrice() {
-    //sort funct
-  }
+  function handleSortByPrice() {}
 
   useEffect(() => {
     setProducts(items);
@@ -118,7 +116,7 @@ const HomePage = () => {
           handleFilterVisibility={handleFilterVisibility}
         ></FilterForm>
       ) : (
-        <p></p>
+        <></>
       )}
 
       <div className="content">
@@ -145,7 +143,7 @@ const HomePage = () => {
             />
           </Stack>
         ) : (
-          <p></p>
+          <></>
         )}
       </div>
     </div>

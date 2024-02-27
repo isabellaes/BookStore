@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using models;
-namespace context;
+namespace Data;
 
 public class Context : DbContext
 {

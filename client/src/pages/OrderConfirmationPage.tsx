@@ -7,7 +7,7 @@ import CartItemCard from "../components/cartItemCard";
 
 const OrderConfirmationPage = () => {
   const order = useSelector((state: RootState) => state.order);
-  console.log(order);
+
   function calculateTotal(cartItems: CartItem[]): number {
     return cartItems.reduce((total, cartItem) => {
       return total + cartItem.product.price * cartItem.quantity;
