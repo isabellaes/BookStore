@@ -1,6 +1,6 @@
 # Webbshop - (under construction)
 
-Webbshop - Simple webbshop only for portfolio.
+Webbshop - Simple webbshop demo for portfolio.
 
 ## Installation
 
